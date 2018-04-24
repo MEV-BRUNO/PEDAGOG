@@ -11,6 +11,6 @@ namespace Pedagog_MVC.Models
         public int id_procjena { get; set; }
         public string nastavnik { get; set; }
         public DateTime datum_razgovora { get; set; }
-        public string biljeska { get; set; } //suradnja
+        public string biljeska { get; set; } //suradnja ponavljaca
     }
 }

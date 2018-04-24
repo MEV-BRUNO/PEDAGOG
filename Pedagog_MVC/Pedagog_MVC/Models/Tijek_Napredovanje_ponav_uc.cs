@@ -12,7 +12,7 @@ namespace Pedagog_MVC.Models
         public int id_tijek { get; set; }
         public DateTime datum { get; set; }
         public string sadrzaj { get; set; }
-        public string dogovor { get; set; } //tijek napredovanja
+        public string dogovor { get; set; } //tijek napredovanja ponavljaca
 
     }
 }
