@@ -12,6 +12,6 @@ namespace Pedagog_MVC.Models
         public DateTime datum { get; set; }
         public string sadrzaj { get; set; }
         public string dogovor { get; set; }
-
+        //tijek pracenja ponavljaca
     }
 }

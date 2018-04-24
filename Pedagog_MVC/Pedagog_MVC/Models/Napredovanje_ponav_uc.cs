@@ -38,6 +38,6 @@ namespace Pedagog_MVC.Models
         public string plan_razgovor_A_sat { get; set; }
         public string plan_razgovor_B_dan { get; set; }
         public string plan_razgovor_B_sat { get; set; }
-
+        //napredovanje ponavljaca
     }
 }
