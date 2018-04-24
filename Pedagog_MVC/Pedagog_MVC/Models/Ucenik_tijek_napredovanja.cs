@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Pedagog_MVC.Models
+{
+    public class Ucenik_tijek_napredovanja
+    {
+
+
+        public long id_napredovanje { get; set; }
+
+        public DateTime datum { get; set; }
+
+        public string sadrzaj { get; set; }
+
+        public string dogovor { get; set; }
+
+    }
+}
