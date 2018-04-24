@@ -153,6 +153,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Roditelj_list.cs" />
+    <Compile Include="Models\Roditelj_procjena.cs" />
+    <Compile Include="Models\Roditelj_razgovor.cs" />
+    <Compile Include="Models\Strucno_usavrsavanje.cs" />
     <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
