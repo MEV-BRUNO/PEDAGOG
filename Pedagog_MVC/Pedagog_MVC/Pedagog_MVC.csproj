@@ -153,9 +153,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Adresar.cs" />
+    <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Ucenik_biljeska.cs" />
+    <Compile Include="Models\Ucenik_obrazovna_postignuca.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -218,7 +223,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Dokumenti\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -247,7 +251,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2052</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
