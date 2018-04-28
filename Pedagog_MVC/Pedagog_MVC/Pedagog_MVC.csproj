@@ -157,6 +157,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Pedagog.cs" />
+    <Compile Include="Models\Razrednik_analiza.cs" />
+    <Compile Include="Models\Razredni_odjel.cs" />
+    <Compile Include="Models\Roditelj_biljeske.cs" />
+    <Compile Include="Models\Roditelj_biljeske_mjesec.cs" />
+    <Compile Include="Models\Skola.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
