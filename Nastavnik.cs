@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 namespace ProjektIdio.Models
 {
     public class Nastavnik
     {
-        public Nastavnik()
-        { }
+        [Required]
         public int ID_UCENIK { get; set; }
-        public int ID_SKOLA { get; set; }public string Ime_Prezime { get; set; }
+        [Required]
+        public int ID_SKOLA { get; set; }
+        [Required]
+        public string Ime_Prezime { get; set; }
+        [Required]
             public string Titula { get; set; }
 
 
