@@ -46,17 +46,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions, Version=5.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataAnnotationsExtensions.5.0.1.27\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.AddIn.Contract">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.AddIn.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition.registration">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.ComponentModel.Composition.registration.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
@@ -153,9 +164,39 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\Roditelj_list.cs" />
+    <Compile Include="Models\Roditelj_procjena.cs" />
+    <Compile Include="Models\Roditelj_razgovor.cs" />
+    <Compile Include="Models\Strucno_usavrsavanje.cs" />
+    <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ispisani_ucenici.cs" />
+    <Compile Include="Models\Nastavnik_analiza.cs" />
+    <Compile Include="Models\Nastavnik_neposredni.cs" />
+    <Compile Include="Models\Nastavnik_protokol.cs" />
+    <Compile Include="Models\Razrednik_procjena.cs" />
+    <Compile Include="Models\Ucenik_napredovanje.cs" />
+    <Compile Include="Models\Ucenik_neposredni_rad.cs" />
+    <Compile Include="Models\Ucenik_prijedlog_postupka.cs" />
+    <Compile Include="Models\Ucenik_protokol_pracenja.cs" />
+    <Compile Include="Models\Ucenik_tijek_napredovanja.cs" />
+    <Compile Include="Models\Napredovanje_ponav_uc.cs" />
+    <Compile Include="Models\Procjena_suradnje_ponav_uc.cs" />
+    <Compile Include="Models\Tijek_Napredovanje_ponav_uc.cs" />
+    <Compile Include="Models\Tijek_pracenja_ponav_uc.cs" />
+    <Compile Include="Models\Pedagog.cs" />
+    <Compile Include="Models\Razrednik_analiza.cs" />
+    <Compile Include="Models\Razredni_odjel.cs" />
+    <Compile Include="Models\Roditelj_biljeske.cs" />
+    <Compile Include="Models\Roditelj_biljeske_mjesec.cs" />
+    <Compile Include="Models\Skola.cs" />
+    <Compile Include="Models\Adresar.cs" />
+    <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Ucenik_biljeska.cs" />
+    <Compile Include="Models\Ucenik_obrazovna_postignuca.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -218,7 +259,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Dokumenti\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -247,7 +287,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2052</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
