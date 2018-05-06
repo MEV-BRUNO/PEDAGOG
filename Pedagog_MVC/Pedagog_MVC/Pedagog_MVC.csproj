@@ -172,6 +172,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ispisani_ucenici.cs" />
+    <Compile Include="Models\Nastavnik_analiza.cs" />
+    <Compile Include="Models\Nastavnik_neposredni.cs" />
+    <Compile Include="Models\Nastavnik_protokol.cs" />
+    <Compile Include="Models\Razrednik_procjena.cs" />
+    <Compile Include="Models\Ucenik_napredovanje.cs" />
+    <Compile Include="Models\Ucenik_neposredni_rad.cs" />
+    <Compile Include="Models\Ucenik_prijedlog_postupka.cs" />
+    <Compile Include="Models\Ucenik_protokol_pracenja.cs" />
+    <Compile Include="Models\Ucenik_tijek_napredovanja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
