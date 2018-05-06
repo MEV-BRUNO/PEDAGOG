@@ -182,6 +182,21 @@
     <Compile Include="Models\Ucenik_prijedlog_postupka.cs" />
     <Compile Include="Models\Ucenik_protokol_pracenja.cs" />
     <Compile Include="Models\Ucenik_tijek_napredovanja.cs" />
+    <Compile Include="Models\Napredovanje_ponav_uc.cs" />
+    <Compile Include="Models\Procjena_suradnje_ponav_uc.cs" />
+    <Compile Include="Models\Tijek_Napredovanje_ponav_uc.cs" />
+    <Compile Include="Models\Tijek_pracenja_ponav_uc.cs" />
+    <Compile Include="Models\Pedagog.cs" />
+    <Compile Include="Models\Razrednik_analiza.cs" />
+    <Compile Include="Models\Razredni_odjel.cs" />
+    <Compile Include="Models\Roditelj_biljeske.cs" />
+    <Compile Include="Models\Roditelj_biljeske_mjesec.cs" />
+    <Compile Include="Models\Skola.cs" />
+    <Compile Include="Models\Adresar.cs" />
+    <Compile Include="Models\Dokument.cs" />
+    <Compile Include="Models\Ucenik_biljeska.cs" />
+    <Compile Include="Models\Ucenik_obrazovna_postignuca.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
