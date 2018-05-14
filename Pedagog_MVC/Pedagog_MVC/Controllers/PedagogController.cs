@@ -72,5 +72,23 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+        public ActionResult Tables_Ucenici_Lista()
+        {
+            return View();
+        }
+
+        public ActionResult Tables_Ucenici_Popis()
+        {
+            return View();
+        }
+
+        public ActionResult Tables_Ucenici_Popis_Detalji()
+        {
+            return View();
+        }
+
+
+
+
     }
 }
