@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Pedagog_MVC.Models.Pedagog>
+
+@{
+    ViewBag.Title = "Popis";
+}
+
+<h2>Popis</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ime_prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lozinka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.titula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.licenca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aktiv_link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aktivan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_skola)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ime_prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lozinka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.titula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.licenca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aktiv_link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aktivan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_skola)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_pedagog }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_pedagog }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_pedagog })
+        </td>
+    </tr>
+}
+
+</table>

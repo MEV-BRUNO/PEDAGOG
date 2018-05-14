@@ -1,0 +1,43 @@
+﻿@model Pedagog_MVC.Models.Pedagog
+@using System.Web.Mvc;
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="text-center">
+            <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
+        </div>
+
+        <p></p>
+        <p></p>
+
+        <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+            Upišite korisnicko ime i lozinku
+        </p>
+
+        @Html.LabelFor(model => model.mail, new { @class = "control-label" })
+        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+        <p></p>
+
+        @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
+        @Html.EditorFor(model => model.lozinka, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+
+
+    </div>
+    <p></p>
+
+    // Submit (save) tipka
+    <p><input type="submit" value="Prijavi se" class="btn btn-danger" /></p>
+    <p> @Html.ActionLink("Prijava", "Prijava", new { @class = "btn btn-link" })  |   @Html.ActionLink("Ponovi lozinku", "ZaboravljenaLozinka", new { @class = "btn btn-link" })  |   @Html.ActionLink("Registracija", "Registracija", new { @class = "btn btn-link" })</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
