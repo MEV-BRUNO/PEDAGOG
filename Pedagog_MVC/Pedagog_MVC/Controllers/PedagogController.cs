@@ -84,7 +84,7 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult TablesRadni3()
         {
-            return View();
+            return View(); 
         }
     }
 }
