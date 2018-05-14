@@ -87,6 +87,11 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+        public ActionResult Tables_Ucenici_Popis_Osobni()
+        {
+            return View();
+        }
+
 
 
 

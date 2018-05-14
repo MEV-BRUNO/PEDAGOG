@@ -2364,6 +2364,7 @@
     <Content Include="Views\Pedagog\Tables_Ucenici_Lista.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Detalji.cshtml" />
+    <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Osobni.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
