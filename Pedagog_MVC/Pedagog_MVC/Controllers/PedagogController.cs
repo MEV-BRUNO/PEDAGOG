@@ -92,6 +92,12 @@ namespace Pedagog_MVC.Controllers
 
         }
 
+
+        public ActionResult Tables_ucenici()
+        {
+            return View();
+        }
+
        
     }
 }
