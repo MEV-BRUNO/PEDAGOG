@@ -72,5 +72,20 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+        public ActionResult UceniciPopisUcenici()
+        {
+            return View();
+        }
+
+        public ActionResult UceniciPopisUceniciFormiranje()
+        {
+            return View();
+        }
+
+        public ActionResult UceniciPopisDetalji()
+        {
+            return View();
+        }
+
     }
 }
