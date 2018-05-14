@@ -55,7 +55,7 @@ namespace Pedagog_MVC.Controllers
             {
                 baza.Pedagozi.Add(p);
                 baza.SaveChanges();
-                return RedirectToAction("Popis");
+                return RedirectToAction("AdminIndex");
             }
 
             return RedirectToAction("Registracija");
@@ -72,19 +72,11 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
-        public ActionResult TablesRadni()
+
+        public ActionResult Public()
         {
             return View();
         }
 
-        public ActionResult TablesRadni2()
-        {
-            return View();
-        }
-
-        public ActionResult TablesRadni3()
-        {
-            return View(); 
-        }
     }
 }
