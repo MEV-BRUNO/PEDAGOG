@@ -72,5 +72,19 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+        public ActionResult TablesRadni()
+        {
+            return View();
+        }
+
+        public ActionResult TablesRadni2()
+        {
+            return View();
+        }
+
+        public ActionResult TablesRadni3()
+        {
+            return View();
+        }
     }
 }
