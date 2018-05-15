@@ -10,9 +10,9 @@ namespace Pedagog_MVC.Models
     public class Tijek_Napredovanje_ponav_uc
     {
         [Required]
-        public int id_napredovanje { get; set; }
+        public long id_napredovanje { get; set; }
         [Required]
-        public int id_tijek { get; set; }
+        public long id_tijek { get; set; }
         [Required]
         public DateTime datum { get; set; }
         [Required]
