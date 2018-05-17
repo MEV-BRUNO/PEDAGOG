@@ -14,17 +14,19 @@ namespace Pedagog_MVC.Models
         [Key]
         public int id_pedagog { get; set; }
 
-        
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Ime i Prezime")]
         public string ime_prezime { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Upisali ste nevaljanu e-mail adresu")]
         [Display(Name = "Email adresa")]
         public string mail { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Lozinka")]
+        [DataType(DataType.Password)]
         public string lozinka { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
@@ -34,7 +36,7 @@ namespace Pedagog_MVC.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Datum licence")]
         [DataType(DataType.Date)]
-        //ako ne napišemo fiksno ovaj format Google Chrome neće dobro prikazati datumsko polje
+        //ako ne napišemo fiksno ovaj format Google Chrome nece dobro prikazati datumsko polje
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime licenca { get; set; }
 

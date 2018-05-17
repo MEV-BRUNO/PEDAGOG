@@ -1,77 +1,89 @@
-﻿
-@model Pedagog_MVC.Models.Pedagog
+﻿@model Pedagog_MVC.Models.Pedagog
 @using System.Web.Mvc;
 
-@using (Html.BeginForm())
-{
 
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <div class="text-center">
-            <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
+
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+
+    @using (Html.BeginForm())
+    {
+
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-signin">
+
+            <div class="text-center">
+                <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
+            </div>
+
+            <p></p>
+            <p></p>
+
+            <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                Upišite podatke kako biste se registrirali
+            </p>
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control", placeholder = "Ime i prezime" } })
+            @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail adresa" } })
+            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.PasswordFor(model => model.lozinka, new { @class = "form-control", placeholder = "Lozinka" })
+            @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.titula, new { htmlAttributes = new { @class = "form-control", placeholder = "Titula" } })
+            @Html.ValidationMessageFor(model => model.titula, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.licenca, new { htmlAttributes = new { @class = "form-control", placeholder = "Licenca" } })
+            @Html.ValidationMessageFor(model => model.licenca, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.aktiv_link, new { htmlAttributes = new { @class = "form-control", placeholder = "Aktiv link" } })
+            @Html.ValidationMessageFor(model => model.aktiv_link, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.aktivan, new { htmlAttributes = new { @class = "form-control", placeholder = "Aktivan" } })
+            @Html.ValidationMessageFor(model => model.aktivan, "", new { @class = "text-danger" })
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.id_skola, new { htmlAttributes = new { @class = "form-control", placeholder = "Id škola" } })
+            @Html.ValidationMessageFor(model => model.id_skola, "", new { @class = "text-danger" })
+
+
+
         </div>
-
         <p></p>
         <p></p>
+        // Submit (save) tipka
+        <p><input type="submit" value="Registriraj se" class="btn btn-danger" /></p>
+        <p> @Html.ActionLink("Prijava", "Prijava", new { @class = "btn btn-link" })  |   @Html.ActionLink("Ponovi lozinku", "ZaboravljenaLozinka", new { @class = "btn btn-link" })  |   @Html.ActionLink("Registracija", "Registracija", new { @class = "btn btn-link" })</p>
+    }
 
-        <p class="text-muted text-center btn-block btn btn-primary btn-rect">
-            Upišite detalje kako biste se registrirali
-        </p>
-
-        @Html.LabelFor(model => model.ime_prezime, new { @class = "control-label" })
-        @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.mail, new { @class = "control-label" })
-        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.lozinka, new { @class = "control-label" })
-        @Html.EditorFor(model => model.lozinka, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.titula, new { @class = "control-label" })
-        @Html.EditorFor(model => model.titula, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.titula, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.licenca, new { @class = "control-label" })
-        @Html.EditorFor(model => model.licenca, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.licenca, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.aktiv_link, new { @class = "control-label" })
-        @Html.EditorFor(model => model.aktiv_link, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.aktiv_link, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.aktivan, new { @class = "control-label" })
-        @Html.EditorFor(model => model.aktivan, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.aktivan, "", new { @class = "text-danger" })
-
-        <p></p>
-
-        @Html.LabelFor(model => model.id_skola, new { @class = "control-label" })
-        @Html.EditorFor(model => model.id_skola, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.id_skola, "", new { @class = "text-danger" })
-
-    </div>
-
-    <p></p>
-    // Submit (save) tipka
-    <p><input type="submit" value="Registriraj se" class="btn btn-danger" /></p>
-    <p> @Html.ActionLink("Prijava", "Prijava", new { @class = "btn btn-link" })  |  @Html.ActionLink("Zaboravio sam lozinku", "ZaboravljenaLozinka", new { @class = "btn btn-link" })  |  @Html.ActionLink("Registracija", "Registracija", new { @class = "btn btn-link" })</p>
-}
-
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

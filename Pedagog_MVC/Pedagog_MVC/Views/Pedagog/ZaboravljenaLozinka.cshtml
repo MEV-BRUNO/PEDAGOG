@@ -1,34 +1,47 @@
 ﻿@model Pedagog_MVC.Models.Pedagog
 @using System.Web.Mvc;
 
-@using (Html.BeginForm())
-{
 
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
 
-        <div class="text-center">
-            <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
+    @using (Html.BeginForm())
+    {
+
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-signin">
+
+            <div class="text-center">
+                <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
+            </div>
+
+            <p></p>
+            <p></p>
+
+            <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                Upišite vašu važeću e-mail adresu
+            </p>
+
+            <p></p>
+            <p></p>
+
+            @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail adresa" } })
+            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+
+
         </div>
-
         <p></p>
-
-        <p class="text-muted text-center btn-block btn btn-primary btn-rect">
-            Unesite svoju važeću e-mail adresu
-        </p>
-
-        @Html.LabelFor(model => model.mail, new { @class = "control-label" })
-        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
-
         <p></p>
+        // Submit (save) tipka
+        <p><input type="submit" value="Povrati lozinku" class="btn btn-success" /></p>
+        <p> @Html.ActionLink("Prijava", "Prijava", new { @class = "btn btn-link" })  |   @Html.ActionLink("Ponovi lozinku", "ZaboravljenaLozinka", new { @class = "btn btn-link" })  |   @Html.ActionLink("Registracija", "Registracija", new { @class = "btn btn-link" })</p>
+    }
 
-
-    </div>
-    <p></p>
-
-    // Submit (save) tipka
-    <p><input type="submit" value="Obnovi lozinku" class="btn btn-success" /></p>
-    <p> @Html.ActionLink("Prijava", "Prijava", new { @class = "btn btn-link" })  |   @Html.ActionLink("Ponovi lozinku", "ZaboravljenaLozinka", new { @class = "btn btn-link" })  |   @Html.ActionLink("Registracija", "Registracija", new { @class = "btn btn-link" })</p>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
