@@ -9,9 +9,9 @@ namespace Pedagog_MVC.Models
     public class Procjena_suradnje_ponav_uc
     {
         [Required]
-        public int id_napredovanje { get; set; }
+        public long id_napredovanje { get; set; }
         [Required]
-        public int id_procjena { get; set; }
+        public long id_procjena { get; set; }
         [Required]
         public string nastavnik { get; set; }
         [Required]

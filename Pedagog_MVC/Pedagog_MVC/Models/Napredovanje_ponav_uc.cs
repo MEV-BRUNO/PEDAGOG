@@ -9,11 +9,11 @@ namespace Pedagog_MVC.Models
     public class Napredovanje_ponav_uc
     {
         [Required]
-        public int id_napredovanje { get; set; }
+        public long id_napredovanje { get; set; }
         [Required]
-        public int id_pedagog { get; set; }
+        public long id_pedagog { get; set; }
         [Required]
-        public int id_ucenik { get; set; }
+        public long id_ucenik { get; set; }
         [Required]
         public int godina { get; set; }
         [Required]
