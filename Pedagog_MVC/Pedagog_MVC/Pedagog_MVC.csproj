@@ -191,6 +191,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Content Include="Views\Pedagog\TablesRadni.cshtml" />
+    <Content Include="Views\Pedagog\TablesRadni2.cshtml" />
+    <Content Include="Views\Pedagog\TablesRadni3.cshtml" />
+    <Content Include="Views\Pedagog\TablesRadniForma.cshtml" />
+    <Content Include="Views\Pedagog\Public.cshtml" />
+    <Content Include="Views\Pedagog\Tables.cshtml" />
+    <Content Include="Views\Pedagog\TablesRadni1.cshtml" />
+    <Content Include="Views\Pedagog\Tables_ucenici.cshtml" />
     <Compile Include="Models\Ispisani_ucenici.cs" />
     <Compile Include="Models\Nastavnik_analiza.cs" />
     <Compile Include="Models\Nastavnik_neposredni.cs" />
