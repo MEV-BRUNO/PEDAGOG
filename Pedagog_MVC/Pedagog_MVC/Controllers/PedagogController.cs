@@ -93,9 +93,6 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
-        public ActionResult TablesRadniForma()
-        {
-            return View();
-        }
+
     }
 }

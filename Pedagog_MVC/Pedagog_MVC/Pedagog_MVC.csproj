@@ -2887,10 +2887,7 @@
     <Content Include="Views\Pedagog\Registracija.cshtml" />
     <Content Include="Views\Pedagog\AdminIndex.cshtml" />
     <Content Include="Views\Pedagog\ZaboravljenaLozinka.cshtml" />
-    <Content Include="Views\Pedagog\TablesRadni.cshtml" />
-    <Content Include="Views\Pedagog\TablesRadni2.cshtml" />
-    <Content Include="Views\Pedagog\TablesRadni3.cshtml" />
-    <Content Include="Views\Pedagog\TablesRadniForma.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
