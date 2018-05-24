@@ -71,8 +71,12 @@ namespace Pedagog_MVC.Controllers
         {
             return View();
         }
-
-
+		
+        public ActionResult Tables_Ucenici_Lista()
+		{
+			return View();
+		}
+		
         public ActionResult Public()
         {
             return View();
@@ -103,8 +107,33 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+		public ActionResult UceniciPopisUcenici()
+        {
+            return View();
+        }
+		
+        public ActionResult Tables_Ucenici_Popis()
+		{
+			return View();
+		}
+		public ActionResult UceniciPopisUceniciFormiranje()
+        {
+            return View();
+        }
+		
+        public ActionResult Tables_Ucenici_Popis_Detalji()
+		{
+			return View();
+		}
 
-
-
+		public ActionResult UceniciPopisDetalji()
+        {
+            return View();
+        }
+		
+        public ActionResult Tables_Ucenici_Popis_Osobni()
+        {
+            return View();
+        }
     }
 }
