@@ -536,6 +536,8 @@
     <Content Include="assets\plugins\Font-Awesome\src\assets\css\prettify.css" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\css\pygments.css" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="assets\plugins\Font-Awesome\src\assets\css\prettify.css" />
+    <Content Include="assets\plugins\Font-Awesome\src\assets\css\pygments.css" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\ico\favicon.ico" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\img\contribution-sample.png" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\img\fort_awesome.jpg" />
@@ -1933,6 +1935,7 @@
     </Content>
     <Content Include="assets\img\logo.psd" />
     <Content Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\plugins\colorpicker\less\colorpicker.less" />
@@ -1976,6 +1979,7 @@
     <Content Include="assets\plugins\flot\PLUGINS.md" />
     <Content Include="assets\plugins\flot\README.md" />
     <Content Include="assets\plugins\Font-Awesome\font\fontawesome-webfont.eot" />
+    <Content Include="assets\plugins\Font-Awesome\font\fontawesome-webfont.svg" />
     <Content Include="assets\plugins\Font-Awesome\font\fontawesome-webfont.ttf" />
     <Content Include="assets\plugins\Font-Awesome\font\fontawesome-webfont.woff" />
     <Content Include="assets\plugins\Font-Awesome\font\FontAwesome.otf" />
@@ -1998,6 +2002,7 @@
     <Content Include="assets\plugins\Font-Awesome\scss\_path.scss" />
     <Content Include="assets\plugins\Font-Awesome\scss\_variables.scss" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="assets\plugins\Font-Awesome\src\assets\font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\font-awesome\font\fontawesome-webfont.ttf" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\font-awesome\font\fontawesome-webfont.woff" />
     <Content Include="assets\plugins\Font-Awesome\src\assets\font-awesome\font\FontAwesome.otf" />
@@ -2076,18 +2081,22 @@
     <Content Include="assets\plugins\Font-Awesome\src\_plugins\icon_page_generator.rb" />
     <Content Include="assets\plugins\Font-Awesome\src\_plugins\site.rb" />
     <Content Include="assets\plugins\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\plugins\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\plugins\fonts\fontawesome-webfont.ttf" />
     <Content Include="assets\plugins\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\plugins\fonts\FontAwesome.otf" />
     <Content Include="assets\plugins\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\plugins\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\plugins\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\plugins\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_fill.eot" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_fill.otf" />
+    <Content Include="assets\plugins\jasny\docs\assets\font\iconic_fill.svg" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_fill.ttf" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_fill.woff" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_stroke.eot" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_stroke.otf" />
+    <Content Include="assets\plugins\jasny\docs\assets\font\iconic_stroke.svg" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_stroke.ttf" />
     <Content Include="assets\plugins\jasny\docs\assets\font\iconic_stroke.woff" />
     <Content Include="assets\plugins\jasny\docs\assets\js\README.md" />
@@ -2103,10 +2112,12 @@
     <Content Include="assets\plugins\jasny\docs\templates\pages\scaffolding.mustache" />
     <Content Include="assets\plugins\jasny\font\iconic_fill.eot" />
     <Content Include="assets\plugins\jasny\font\iconic_fill.otf" />
+    <Content Include="assets\plugins\jasny\font\iconic_fill.svg" />
     <Content Include="assets\plugins\jasny\font\iconic_fill.ttf" />
     <Content Include="assets\plugins\jasny\font\iconic_fill.woff" />
     <Content Include="assets\plugins\jasny\font\iconic_stroke.eot" />
     <Content Include="assets\plugins\jasny\font\iconic_stroke.otf" />
+    <Content Include="assets\plugins\jasny\font\iconic_stroke.svg" />
     <Content Include="assets\plugins\jasny\font\iconic_stroke.ttf" />
     <Content Include="assets\plugins\jasny\font\iconic_stroke.woff" />
     <Content Include="assets\plugins\jasny\less\accordion.less" />
@@ -2311,6 +2322,7 @@
     <Content Include="assets\plugins\uniform\themes\jeans\css\uniform.jeans.scss" />
     <Content Include="assets\plugins\uniform\themes\_base\css\uniform._base.scss" />
     <Content Include="assets\plugins\uniform\www\stylesheets\multiple-themes.scss" />
+    <Content Include="assets\plugins\validationengine\images\johnny_automatic_skew_gear.svg" />
     <Content Include="assets\plugins\validationengine\test\AjaxTestServer%24AjaxValidationFieldResponse.class" />
     <Content Include="assets\plugins\validationengine\test\AjaxTestServer%24AjaxValidationFormResponse.class" />
     <Content Include="assets\plugins\validationengine\test\AjaxTestServer.class" />
@@ -2332,6 +2344,7 @@
     <Content Include="obj\Debug\Pedagog_MVC.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\Pedagog_MVC.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Release\Pedagog_MVC.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\Pedagog_MVC.csprojAssemblyReference.cache" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2365,6 +2378,9 @@
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Detalji.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Osobni.cshtml" />
+    <Content Include="Views\Pedagog\UceniciPopisUcenici.cshtml" />
+    <Content Include="Views\Pedagog\UceniciPopisUceniciFormiranje.cshtml" />
+    <Content Include="Views\Pedagog\UceniciPopisDetalji.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
