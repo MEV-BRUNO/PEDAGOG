@@ -8,13 +8,13 @@ namespace ProjektIdio.Models
     public class Nastavnik
     {
         [Required]
-        public int ID_UCENIK { get; set; }
+        public long id_ucenik { get; set; }
         [Required]
-        public int ID_SKOLA { get; set; }
+        public int id_skola { get; set; }
         [Required]
-        public string Ime_Prezime { get; set; }
+        public string ime_prezime { get; set; }
         [Required]
-            public string Titula { get; set; }
+        public int titula { get; set; }
 
 
         }

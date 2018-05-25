@@ -183,9 +183,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BazaPovezivanje\BazaDbContext.cs" />
     <Compile Include="Controllers\PedagogController.cs" />
+    <Compile Include="Models\Godina_ucenik.cs" />
+    <Compile Include="Models\Nastavnik.cs" />
+    <Compile Include="Models\Obitelj.cs" />
     <Compile Include="Models\Roditelj_list.cs" />
     <Compile Include="Models\Roditelj_procjena.cs" />
     <Compile Include="Models\Roditelj_razgovor.cs" />
+    <Compile Include="Models\SkolskaGodina.cs" />
     <Compile Include="Models\Strucno_usavrsavanje.cs" />
     <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">
@@ -2923,7 +2927,6 @@
     <Content Include="Views\Pedagog\Registracija.cshtml" />
     <Content Include="Views\Pedagog\AdminIndex.cshtml" />
     <Content Include="Views\Pedagog\ZaboravljenaLozinka.cshtml" />
-
     <Content Include="Views\Pedagog\Tables_Ucenici_Lista.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Detalji.cshtml" />
