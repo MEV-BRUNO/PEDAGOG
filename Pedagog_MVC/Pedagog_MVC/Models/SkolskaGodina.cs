@@ -8,7 +8,7 @@ namespace ProjektIdio.Models
     public class SkolskaGodina
     {
         [Required]
-            public int Godina{ get; set; }
+            public int godina{ get; set; }
 
         }
     }
