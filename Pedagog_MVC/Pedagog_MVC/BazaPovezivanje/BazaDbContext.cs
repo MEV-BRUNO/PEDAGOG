@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using Pedagog_MVC.Models;
+using ProjektIdio.Models;
 
 namespace Pedagog_MVC.BazaPovezivanje
 {
@@ -11,6 +12,9 @@ namespace Pedagog_MVC.BazaPovezivanje
     {
 
         public DbSet<Pedagog> Pedagozi { get; set; }
+        public DbSet<Ucenik> Ucenici { get; set; }
+
+        public DbSet<Adresar> Adresari { get; set; }
 
     }
 }
