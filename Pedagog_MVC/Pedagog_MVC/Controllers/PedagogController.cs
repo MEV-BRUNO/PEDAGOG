@@ -135,5 +135,10 @@ namespace Pedagog_MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult Tables()
+        {
+            return View();
+        }
     }
 }
