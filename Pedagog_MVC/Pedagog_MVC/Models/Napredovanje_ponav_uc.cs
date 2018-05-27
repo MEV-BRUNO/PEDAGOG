@@ -11,7 +11,7 @@ namespace Pedagog_MVC.Models
         [Required]
         public long id_napredovanje { get; set; }
         [Required]
-        public long id_pedagog { get; set; }
+        public int id_pedagog { get; set; }
         [Required]
         public long id_ucenik { get; set; }
         [Required]
