@@ -191,11 +191,11 @@
     <Compile Include="Models\Roditelj_razgovor.cs" />
     <Compile Include="Models\SkolskaGodina.cs" />
     <Compile Include="Models\Strucno_usavrsavanje.cs" />
+    <Compile Include="Models\Ucenik.cs" />
     <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Content Include="Views\Pedagog\TablesRadni.cshtml" />
     <Content Include="Views\Pedagog\TablesRadni2.cshtml" />
     <Content Include="Views\Pedagog\TablesRadni3.cshtml" />
     <Content Include="Views\Pedagog\TablesRadniForma.cshtml" />
@@ -2934,6 +2934,11 @@
     <Content Include="Views\Pedagog\UceniciPopisUcenici.cshtml" />
     <Content Include="Views\Pedagog\UceniciPopisUceniciFormiranje.cshtml" />
     <Content Include="Views\Pedagog\UceniciPopisDetalji.cshtml" />
+    <Content Include="Views\Pedagog\TablesRadni.cshtml" />
+    <Content Include="Views\Pedagog\DodajAdresar.cshtml" />
+    <Content Include="Views\Pedagog\UrediAdresar.cshtml" />
+    <Content Include="Views\Pedagog\ObrisiAdresar.cshtml" />
+    <Content Include="Views\Pedagog\InfoAdresar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
