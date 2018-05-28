@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Pedagog_MVC.Models.Adresar>
+
+<!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -65,7 +67,7 @@
 
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="~/#"><i class="icon-user"></i> Korisničk profil </a>
+                                <a href="~/#"><i class="icon-user"></i> Korisnički profil </a>
                             </li>
                             <li>
                                 <a href="~/#"><i class="icon-gear"></i> Osobne postavke </a>
@@ -295,8 +297,7 @@
                     </div>
                 </div>
 
-                <hr />
-
+                <hr />               
 
                 <div class="row">
                     <div class="col-lg-11">
@@ -308,7 +309,7 @@
 
                                 <br>
                                 <p>
-                                    <a href="~/#" class="btn btn-primary btn-xs btn-grad"> Dodaj kontakt </a>
+                                    <a href="@Url.Action("DodajAdresar")" data-toggle="modal" aria-hidden="true" class="btn btn-info btn-xs btn-grad">Dodaj kontakt</a>
                                 </p>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -323,30 +324,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="col-md-1">1.</td>
-                                                <td class="col-md-3">Udruga za ovisnost</td>
-                                                <td class="col-md-2">Zagrebačka 23, 10000 Zagreb</td>
-                                                <td class="col-md-1">098/12345678<br>info@gmail.com</td>
-                                                <td class="col-md-3">Bilješle abc adsdasd</td>
-                                                <td class="col-md-2">
-                                                    <a href="~/#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="~/#" class="btn btn-info btn-xs btn-grad">Info</a>
-                                                    <a href="~/#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="col-md-1">2.</td>
-                                                <td class="col-md-3">Udruga za ovisnost</td>
-                                                <td class="col-md-2">Zagrebačka 23, 10000 Zagreb</td>
-                                                <td class="col-md-1">098/12345678<br>info@gmail.com</td>
-                                                <td class="col-md-3">Bilješle abc adsdasd</td>
-                                                <td class="col-md-2">
-                                                    <a href="~/#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
-                                                    <a href="~/#" class="btn btn-info btn-xs btn-grad">Info</a>
-                                                    <a href="~/#" class="btn btn-danger btn-xs btn-grad">Briši</a>
-                                                </td>
-                                            </tr>
+
+                                            @foreach (Pedagog_MVC.Models.Adresar adr in Model)
+                                {
+                                    <tr>
+                                        <td class="col-md-1">@adr.id_kontakt</td>
+                                        <td class="col-md-3">@adr.naziv</td>
+                                        <td class="col-md-2">@adr.adresa</td>
+                                        <td class="col-md-1">@adr.tel<br>@adr.mail</td>
+                                        <td class="col-md-3">@adr.opis</td>
+                                        <td class="col-md-2">
+                                            <a href="@Url.Action("UrediAdresar","Pedagog",new { id = adr.id_kontakt})" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                            <a href="@Url.Action("InfoAdresar","Pedagog", new { id =adr.id_kontakt})" data-toggle="modal" aria-hidden="true" class="btn btn-info btn-xs btn-grad">Info</a>
+                                            <a href="@Url.Action("ObrisiAdresar","Pedagog", new { id = adr.id_kontakt })" data-toggle="modal" aria-hidden="true" class="btn btn-danger btn-xs btn-grad">Obriši</a>
+                                        </td>
+                                    </tr>
+                    }
                                         </tbody>
                                     </table>
                                 </div>
