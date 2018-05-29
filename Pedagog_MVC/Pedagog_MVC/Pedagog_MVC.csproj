@@ -2939,6 +2939,12 @@
     <Content Include="Views\Pedagog\UrediAdresar.cshtml" />
     <Content Include="Views\Pedagog\ObrisiAdresar.cshtml" />
     <Content Include="Views\Pedagog\InfoAdresar.cshtml" />
+    <Content Include="Views\Pedagog\Tables_Nastavnik_Razrednik_Profil_Detalji.cshtml" />
+    <Content Include="Views\Pedagog\Ucenici_Zapisnik_Napredovanje.cshtml" />
+    <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja.cshtml" />
+    <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_02.cshtml" />
+    <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_03_Edit.cshtml" />
+    <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_Novi_02.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
