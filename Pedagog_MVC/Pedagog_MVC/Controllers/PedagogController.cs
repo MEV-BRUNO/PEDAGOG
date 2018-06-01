@@ -144,6 +144,46 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+        public ActionResult Tables_Nastavnik_Razrednik_Profil_Detalji()
+        {
+            return View();
+        }
+
+        public ActionResult Ucenici_Zapisnik_Napredovanje()
+        {
+            return View();
+        }
+
+        public ActionResult Ucenici_Zapisnik_Pracenja()
+        {
+            return View();
+        }
+
+        public ActionResult Ucenici_Zapisnik_Pracenja_02()
+        { 
+            return View();
+        }
+
+        public ActionResult Ucenici_Zapisnik_Pracenja_03_Edit()
+        {
+            return View();
+        }
+
+        public ActionResult Ucenici_Zapisnik_Pracenja_Novi_02()
+        {
+            return View();
+        }
+
+        public ActionResult Protokol_Promatranja_Uredi()
+        {
+            return View();
+        }
+
+        public ActionResult Protokol_Promatranja()
+        {
+            return View();
+        }
+
 
 
         public ActionResult DodajAdresar()
