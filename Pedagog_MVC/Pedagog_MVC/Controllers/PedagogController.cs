@@ -174,6 +174,16 @@ namespace Pedagog_MVC.Controllers
             return View();
         }
 
+        public ActionResult Protokol_Promatranja_Uredi()
+        {
+            return View();
+        }
+
+        public ActionResult Protokol_Promatranja()
+        {
+            return View();
+        }
+
 
 
         public ActionResult DodajAdresar()
