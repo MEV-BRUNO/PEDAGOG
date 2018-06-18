@@ -183,7 +183,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BazaPovezivanje\BazaDbContext.cs" />
     <Compile Include="Controllers\PedagogController.cs" />
-    <Compile Include="Controllers\RazredniOdjeliController.cs" />
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
@@ -2948,11 +2947,6 @@
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_Novi_02.cshtml" />
     <Content Include="Views\Pedagog\Protokol_Promatranja_Uredi.cshtml" />
     <Content Include="Views\Pedagog\Protokol_Promatranja.cshtml" />
-    <Content Include="Views\RazredniOdjeli\TablesRazredniOdjel.cshtml" />
-    <Content Include="Views\RazredniOdjeli\DodajOdjel.cshtml" />
-    <Content Include="Views\RazredniOdjeli\InfoOdjel.cshtml" />
-    <Content Include="Views\RazredniOdjeli\UrediRazredni_odjel.cshtml" />
-    <Content Include="Views\RazredniOdjeli\ObrisiOdjel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

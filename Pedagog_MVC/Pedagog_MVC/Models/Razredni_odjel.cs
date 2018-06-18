@@ -1,44 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Pedagog_MVC.Models
 {
-    [Table("razredni_odjel")]
     public class Razredni_odjel
     {
-        [Key]
         [Required]
         public int id_odjel { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Školska Godina")]
+        [Required]
         public int godina { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Naziv")]
+        [Required]
         public string naziv { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Razred")]
+        [Required]
         public int razred { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Razrednik")]
+        [Required]
         public int id_razrednik { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "OŠ/SŠ(0/1)")]
+        [Required]
         public int os_ss { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Program")]
+        [Required]
         public string program { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Usmjerenje")]
+        [Required]
         public string usmjerenje { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Broj učenica")]
+        [Required]
         public int broj_z { get; set; }
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Broj učenika")]
+        [Required]
         public int broj_m { get; set; }
     }
 }

@@ -16,7 +16,5 @@ namespace Pedagog_MVC.BazaPovezivanje
 
         public DbSet<Adresar> Adresari { get; set; }
 
-        public DbSet<Razredni_odjel> RazredniOdjeli { get; set; }    
-
     }
 }
