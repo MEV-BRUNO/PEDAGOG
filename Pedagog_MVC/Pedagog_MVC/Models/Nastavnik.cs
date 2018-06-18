@@ -1,14 +1,18 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 namespace ProjektIdio.Models
 {
+    [Table("nastavnik")]
     public class Nastavnik
     {
         [Required]
-        public long id_ucenik { get; set; }
+        [Key]
+        public long id_nastavnik { get; set; }
         [Required]
         public int id_skola { get; set; }
         [Required]
@@ -17,6 +21,5 @@ namespace ProjektIdio.Models
         public int titula { get; set; }
 
 
-        }
     }
-
+}

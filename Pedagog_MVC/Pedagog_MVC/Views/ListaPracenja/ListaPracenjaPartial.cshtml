@@ -1,0 +1,542 @@
+﻿@model Pedagog_MVC.Models.PomocniModelLista.ModelLP
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="~/assets/css/main.css" />
+<link rel="stylesheet" href="~/assets/css/theme.css" />
+<link rel="stylesheet" href="~/assets/css/MoneAdmin.css" />
+<link rel="stylesheet" href="~/assets/plugins/Font-Awesome/css/font-awesome.css" />
+<!--END GLOBAL STYLES -->
+<!-- PAGE LEVEL STYLES -->
+<link href="~/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
+<div class="col-lg-9">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <form class="form-horizontal">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label class="control-label col-lg-12">Odabrani učenik: @Model.ucenik.ime_prezime </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-5">Školska godina:</label>
+                            <div class="col-lg-7">
+                                <select class="form-control">
+                                    <option>2017./2018.</option>
+                                    <option>2016./2017.</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+                </form>
+            </div><!--END ROW -->
+        </div><!--END HEAD -->
+        <div class="panel-body">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="~/#osobni" data-toggle="tab">Osnovni podaci</a>
+                </li>
+                <li>
+                    <a href="~/#obitelj" data-toggle="tab">Obitelj</a>
+                </li>
+                <li>
+                    <a href="~/#razlog" data-toggle="tab">Razlog</a>
+                </li>
+                <li>
+                    <a href="~/#procjena" data-toggle="tab">Procjena</a>
+                </li>
+                <li>
+                    <a href="~/#inicijalni" data-toggle="tab">Uvjeti-Učenje-Vještine</a>
+                </li>
+                <li>
+                    <a href="~/#postignuca" data-toggle="tab">Postignuća</a>
+                </li>
+                <li>
+                    <a href="~/#zapazanja" data-toggle="tab">Neposredni rad</a>
+                </li>
+                <li>
+                    <a href="~/#prijedlog" data-toggle="tab">Zaključak</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+
+                <div class="tab-pane fade in active" id="osobni">
+                    @using (Ajax.BeginForm("ListaPracenjaPartial", "ListaPracenja", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "EditSuccess"
+
+                    }, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+
+                                        @Html.HiddenFor(model => model.ucenik.biljeska)
+                                        @Html.HiddenFor(model => model.ucenik.id_ucenik)
+                                        @Html.HiddenFor(model => model.ucenik.oib)
+                                        @Html.HiddenFor(model => model.ucenik.spol)
+                                        @Html.HiddenFor(model => model.ucenik.ime_prezime)
+                                        @Html.HiddenFor(model => model.listaPracenja.datum)
+                                        @Html.HiddenFor(model => model.listaPracenja.godina)
+                                        @Html.HiddenFor(model => model.listaPracenja.id_odjel)
+                                        @Html.HiddenFor(model => model.listaPracenja.id_pedagog)
+                                        @Html.HiddenFor(model => model.listaPracenja.id_pracenje)
+                                        @Html.HiddenFor(model => model.listaPracenja.id_ucenik)
+                                        @Html.HiddenFor(model => model.listaPracenja.inic_razrednik)
+                                        @Html.HiddenFor(model => model.listaPracenja.inic_roditelj)
+                                        @Html.HiddenFor(model => model.listaPracenja.inic_ucenik)
+                                        @Html.HiddenFor(model => model.listaPracenja.soc_eko)
+                                        @Html.HiddenFor(model => model.listaPracenja.suradnja)
+                                        @Html.HiddenFor(model => model.listaPracenja.ucenje)
+                                        @Html.HiddenFor(model => model.listaPracenja.vjestine)
+                                        @Html.HiddenFor(model => model.listaPracenja.zakljucak)
+                                        @Html.HiddenFor(model => model.listaPracenja.razlog)
+                                        <label class="control-label col-lg-4">Razredni odjel:</label>
+                                        <div class="col-lg-6">
+                                            @Html.EditorFor(model => model.Razred.naziv, new { htmlAttributes = new { disabled = true, @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Razred.naziv, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4">Razrednik:</label>
+                                        <div class="col-lg-6">
+                                            @Html.EditorFor(model => model.Razrednik.ime_prezime, new { htmlAttributes = new { disabled=true, @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Razrednik.ime_prezime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text1" class="control-label col-lg-4">Datum rođenja</label>
+                                        <div class="col-lg-6">
+                                            @Html.EditorFor(model => model.ucenik.datum, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ucenik.datum, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="text4" class="control-label col-lg-1"></label>
+                                        <div class="col-lg-8">
+
+                                            <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>                                           
+                                            <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-danger btn-md btn-grad">Odustani</a>
+                                        </div>
+                                    </div>
+                                </div><!--END COL -->
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="limiter" class="control-label col-lg-4">Mjesto i država rođenja</label>
+                                        <div class="col-lg-6">
+                                            @Html.EditorFor(model => model.ucenik.grad, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ucenik.grad, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text1" class="control-label col-lg-4">Adresa stanovanja</label>
+                                        <div class="col-lg-6">
+                                            @Html.EditorFor(model => model.ucenik.adresa, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ucenik.adresa, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text1" class="control-label col-lg-4">Nadnevak početka praćenja</label>
+                                        <div class="col-lg-6">
+                                            @Html.EditorFor(model => model.listaPracenja.datum, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.datum, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div><!--END COL -->
+                            </div><!--END ROW -->
+
+                        </form>
+                    }
+                </div><!--END osobni podaci -->
+
+
+                <div class="tab-pane fade" id="obitelj">
+                    <p>
+                        
+                        <a href="@Url.Action("DodajClana","ListaPracenja", new { id= Model.ucenik.id_ucenik })" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Novi član obitelji</a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Prezime i ime</th>
+                                    <th>Svojstvo</th>
+                                    <th>Adresa</th>
+                                    <th>Kontakt</th>
+                                    <th>Zanimanje</th>
+                                    <th>Aktivnost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (ProjektIdio.Models.Obitelj clan in Model.Obitelj)
+                                {
+                                    <tr>
+                                        <td class="col-md-1">@clan.id_obitelj</td>
+                                        <td class="col-md-2">@clan.ime_prezime</td>
+                                        <td class="col-md-1">@clan.vrsta</td>
+                                        <td class="col-md-2">@clan.adresa, @clan.grad</td>
+                                        <td class="col-md-2">@clan.tel<br>@clan.mail</td>
+                                        <td class="col-md-2">@clan.obrazovanje</td>
+                                        <td class="col-md-2">
+                                            <a href="@Url.Action("UrediClana","ListaPracenja",new { id = clan.id_obitelj})" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                            <a href="@Url.Action("InfoClan","ListaPracenja",new { id = clan.id_obitelj})" data-toggle="modal" aria-hidden="true" class="btn btn-info btn-xs btn-grad">Info</a>
+                                            <a href="@Url.Action("ObrisiClana","ListaPracenja",new { id = clan.id_obitelj})" data-toggle="modal" aria-hidden="true" class="btn btn-danger btn-xs btn-grad">Obrisi</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div><!--END TAB obitelj -->
+                <div class="tab-pane fade" id="razlog">
+                    @using (Ajax.BeginForm("ListaPracenjaPartial", "ListaPracenja", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "EditSuccess"
+
+                    }, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <form class="form-horizontal">
+                            @Html.HiddenFor(model => model.ucenik.biljeska)
+                            @Html.HiddenFor(model => model.ucenik.id_ucenik)
+                            @Html.HiddenFor(model => model.ucenik.oib)
+                            @Html.HiddenFor(model => model.ucenik.spol)
+                            @Html.HiddenFor(model => model.ucenik.ime_prezime)
+                            @Html.HiddenFor(model => model.ucenik.grad)
+                            @Html.HiddenFor(model => model.ucenik.datum)
+                            @Html.HiddenFor(model => model.ucenik.adresa)
+                            @Html.HiddenFor(model => model.listaPracenja.datum)
+                            @Html.HiddenFor(model => model.listaPracenja.godina)
+                            @Html.HiddenFor(model => model.listaPracenja.id_odjel)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pedagog)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pracenje)
+                            @Html.HiddenFor(model => model.listaPracenja.id_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_razrednik)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_roditelj)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.soc_eko)
+                            @Html.HiddenFor(model => model.listaPracenja.suradnja)
+                            @Html.HiddenFor(model => model.listaPracenja.ucenje)
+                            @Html.HiddenFor(model => model.listaPracenja.vjestine)
+                            @Html.HiddenFor(model => model.listaPracenja.zakljucak)
+                            <div class="form-group">
+                                @Html.TextAreaFor(model => model.listaPracenja.razlog, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.listaPracenja.razlog, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-danger btn-md btn-grad">Odustani</a>
+                            </div>
+                        </form>
+                    }
+                </div>
+                <div class="tab-pane fade" id="procjena">
+                    @using (Ajax.BeginForm("ListaPracenjaPartial", "ListaPracenja", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "EditSuccess"
+
+                    }, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <form class="form-horizontal">
+                            @Html.HiddenFor(model => model.ucenik.biljeska)
+                            @Html.HiddenFor(model => model.ucenik.id_ucenik)
+                            @Html.HiddenFor(model => model.ucenik.oib)
+                            @Html.HiddenFor(model => model.ucenik.spol)
+                            @Html.HiddenFor(model => model.ucenik.ime_prezime)
+                            @Html.HiddenFor(model => model.ucenik.grad)
+                            @Html.HiddenFor(model => model.ucenik.datum)
+                            @Html.HiddenFor(model => model.ucenik.adresa)
+                            @Html.HiddenFor(model => model.listaPracenja.datum)
+                            @Html.HiddenFor(model => model.listaPracenja.godina)
+                            @Html.HiddenFor(model => model.listaPracenja.id_odjel)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pedagog)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pracenje)
+                            @Html.HiddenFor(model => model.listaPracenja.id_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.razlog)
+                            @Html.HiddenFor(model => model.listaPracenja.soc_eko)
+                            @Html.HiddenFor(model => model.listaPracenja.suradnja)
+                            @Html.HiddenFor(model => model.listaPracenja.ucenje)
+                            @Html.HiddenFor(model => model.listaPracenja.vjestine)
+                            @Html.HiddenFor(model => model.listaPracenja.zakljucak)
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                                Inicijalna procjena - razgovor s učenikom
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            @Html.TextAreaFor(model => model.listaPracenja.inic_ucenik, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.inic_ucenik, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                                Inicijalna procjena - razgovor s roditeljem/skrbnikom
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            @Html.TextAreaFor(model => model.listaPracenja.inic_roditelj, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.inic_roditelj, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                                                Inicijalna procjena - razgovor s razrednikom
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            @Html.TextAreaFor(model => model.listaPracenja.inic_razrednik, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.inic_razrednik, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-danger btn-md btn-grad">Odustani</a>
+                            </div>
+
+                        </form>
+                    }
+                </div><!--END TAB obitelj -->
+                <div class="tab-pane fade" id="inicijalni">
+                    @using (Ajax.BeginForm("ListaPracenjaPartial", "ListaPracenja", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "EditSuccess"
+
+                    }, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <form class="form-horizontal">
+                            @Html.HiddenFor(model => model.ucenik.biljeska)
+                            @Html.HiddenFor(model => model.ucenik.id_ucenik)
+                            @Html.HiddenFor(model => model.ucenik.oib)
+                            @Html.HiddenFor(model => model.ucenik.spol)
+                            @Html.HiddenFor(model => model.ucenik.ime_prezime)
+                            @Html.HiddenFor(model => model.ucenik.grad)
+                            @Html.HiddenFor(model => model.ucenik.datum)
+                            @Html.HiddenFor(model => model.ucenik.adresa)
+                            @Html.HiddenFor(model => model.listaPracenja.datum)
+                            @Html.HiddenFor(model => model.listaPracenja.godina)
+                            @Html.HiddenFor(model => model.listaPracenja.id_odjel)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pedagog)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pracenje)
+                            @Html.HiddenFor(model => model.listaPracenja.id_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_razrednik)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_roditelj)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.razlog)
+                            @Html.HiddenFor(model => model.listaPracenja.suradnja)
+                            @Html.HiddenFor(model => model.listaPracenja.zakljucak)
+                            <div class="panel-group" id="accordion2">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2b">
+                                                Socioekononski uvjeti i odgojno-obrazovni utjecaj okružja
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse2b" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            @Html.TextAreaFor(model => model.listaPracenja.soc_eko, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.soc_eko, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse3b">
+                                                Učenje i sazrevanje
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse3b" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            @Html.TextAreaFor(model => model.listaPracenja.ucenje, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.ucenje, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse4b">
+                                                Socijalne vještine učenika i odnos prema obavezama
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse4b" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            @Html.TextAreaFor(model => model.listaPracenja.vjestine, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.listaPracenja.vjestine, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-danger btn-md btn-grad">Odustani</a>
+                            </div>
+
+                        </form>
+                    }
+                </div><!--END TAB inicijalni podaci -->
+                <div class="tab-pane fade" id="postignuca">
+                    <p>
+                        <a href="@Url.Action("DodajPostignuce",new { id=Model.listaPracenja.id_pracenje })" class="btn btn-primary btn-xs btn-grad"> Novo postignuce</a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Šk.godina</th>
+                                    <th>Razred</th>
+                                    <th>Napomena</th>
+                                    <th>Aktivnost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Pedagog_MVC.Models.Ucenik_obrazovna_postignuca post in Model.Postignuca)
+                                {
+                                    <tr>
+                                        <td class="col-md-1">@post.godina</td>
+                                        <td class="col-md-2">@post.razred</td>
+                                        <td class="col-md-7">@post.napomena</td>
+                                        <td class="col-md-2">
+                                            <a href="@Url.Action("UrediPostignuce","ListaPracenja",new { id = post.id_postignuce})" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                            <a href="@Url.Action("InfoPostignuce","ListaPracenja",new { id = post.id_postignuce})" data-toggle="modal" aria-hidden="true" class="btn btn-info btn-xs btn-grad">Info</a>
+                                            <a href="@Url.Action("ObrisiPostignuce","ListaPracenja",new { id = post.id_postignuce})" data-toggle="modal" aria-hidden="true" class="btn btn-danger btn-xs btn-grad">Obrisi</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!--END TAB postignuća -->
+                <div class="tab-pane fade" id="zapazanja">
+                    <p>
+                        <a href="@Url.Action("DodajRad",new { id=Model.listaPracenja.id_pracenje })" class="btn btn-primary btn-xs btn-grad"> Novi zapis</a>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Datum</th>
+                                    <th>Oblici i način rada s učenikom, učiteljima, roditeljima/starateljima i drugima </th>
+                                    <th>Aktivnost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Pedagog_MVC.Models.Ucenik_neposredni_rad rad in Model.NeposredniRadovi)
+                                {
+                                    <tr>
+                                        <td class="col-md-1">@rad.datum</td>
+                                        <td class="col-md-9">@rad.biljeska</td>
+                                        <td class="col-md-2">
+                                            <a href="@Url.Action("UrediRad","ListaPracenja",new { id = rad.id_rad})" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                            <a href="@Url.Action("ObrisiRad","ListaPracenja",new { id = rad.id_rad})" data-toggle="modal" aria-hidden="true" class="btn btn-danger btn-xs btn-grad">Obrisi</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!--END TAB zapažanja -->
+                <div class="tab-pane fade" id="prijedlog">
+                    @using (Ajax.BeginForm("ListaPracenjaPartial", "ListaPracenja", new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "EditSuccess"
+
+                    }, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <form class="form-horizontal">
+                            @Html.HiddenFor(model => model.ucenik.biljeska)
+                            @Html.HiddenFor(model => model.ucenik.id_ucenik)
+                            @Html.HiddenFor(model => model.ucenik.oib)
+                            @Html.HiddenFor(model => model.ucenik.spol)
+                            @Html.HiddenFor(model => model.ucenik.ime_prezime)
+                            @Html.HiddenFor(model => model.ucenik.grad)
+                            @Html.HiddenFor(model => model.ucenik.datum)
+                            @Html.HiddenFor(model => model.ucenik.adresa)
+                            @Html.HiddenFor(model => model.listaPracenja.datum)
+                            @Html.HiddenFor(model => model.listaPracenja.godina)
+                            @Html.HiddenFor(model => model.listaPracenja.id_odjel)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pedagog)
+                            @Html.HiddenFor(model => model.listaPracenja.id_pracenje)
+                            @Html.HiddenFor(model => model.listaPracenja.id_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_razrednik)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_roditelj)
+                            @Html.HiddenFor(model => model.listaPracenja.inic_ucenik)
+                            @Html.HiddenFor(model => model.listaPracenja.soc_eko)
+                            @Html.HiddenFor(model => model.listaPracenja.suradnja)
+                            @Html.HiddenFor(model => model.listaPracenja.ucenje)
+                            @Html.HiddenFor(model => model.listaPracenja.vjestine)
+                            @Html.HiddenFor(model => model.listaPracenja.razlog)
+                            <div class="form-group">
+                                <label>Završni zaključak praćenja učenika</label>
+                                @Html.TextAreaFor(model => model.listaPracenja.zakljucak, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.listaPracenja.zakljucak, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-danger btn-md btn-grad">Odustani</a>
+                            </div>
+                        </form>
+                    }
+                </div> <!--END TAB zapažanja -->
+            </div>
+        </div>
+    </div>
+</div><!--END COL 9 -->
+
+<script src="~/assets/plugins/jquery-2.0.3.min.js"></script>
+<script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<!-- END GLOBAL SCRIPTS -->
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
