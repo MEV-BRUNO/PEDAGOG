@@ -19,7 +19,7 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult TablesRazredniOdjel()
         {
-            return View(odjeli.RazredniOdjeli);
+            return View(odjeli.Razredi);
         }
 
 
@@ -43,7 +43,7 @@ namespace Pedagog_MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                odjeli.RazredniOdjeli.Add(rz);
+                odjeli.Razredi.Add(rz);
                 odjeli.SaveChanges();
                 return RedirectToAction("TablesRazredniOdjel");//zamjeni
             }
@@ -60,7 +60,7 @@ namespace Pedagog_MVC.Controllers
             Razredni_odjel rz = new Razredni_odjel();
 
 
-            foreach (Razredni_odjel rz1 in odjeli.RazredniOdjeli)
+            foreach (Razredni_odjel rz1 in odjeli.Razredi)
             {
                 if (rz1.id_odjel == id)
                 {
@@ -94,7 +94,7 @@ namespace Pedagog_MVC.Controllers
             {
                 return PartialView("UrediRazredni_odjel", rz);
             }
-            Razredni_odjel R = odjeli.RazredniOdjeli.Where(
+            Razredni_odjel R = odjeli.Razredi.Where(
               x => x.id_odjel == rz.id_odjel).SingleOrDefault();
 
             if (rz.id_odjel != 0 && R != null)// update
@@ -103,7 +103,7 @@ namespace Pedagog_MVC.Controllers
             }
             else
             {
-                odjeli.RazredniOdjeli.Add(rz);
+                odjeli.Razredi.Add(rz);
             }
             odjeli.SaveChanges();
             if (Request.IsAjaxRequest())
@@ -117,7 +117,7 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult ObrisiOdjel(int id)
         {
-            Razredni_odjel rz = odjeli.RazredniOdjeli.Find(id);
+            Razredni_odjel rz = odjeli.Razredi.Find(id);
             if (Request.IsAjaxRequest())
             {
                 ViewBag.IsUpdate = false;
@@ -132,12 +132,12 @@ namespace Pedagog_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ObrisiOdjel1(int id)
         {
-            Razredni_odjel R = odjeli.RazredniOdjeli.Where(
+            Razredni_odjel R = odjeli.Razredi.Where(
               x => x.id_odjel == id).SingleOrDefault();
 
             if (R != null)
             {
-                odjeli.RazredniOdjeli.Remove(R);
+                odjeli.Razredi.Remove(R);
                 odjeli.SaveChanges();
             }
             if (Request.IsAjaxRequest())
@@ -151,7 +151,7 @@ namespace Pedagog_MVC.Controllers
         [HttpGet]
         public ActionResult InfoOdjel(int id)
         {
-            Razredni_odjel rz = odjeli.RazredniOdjeli.Find(id);
+            Razredni_odjel rz = odjeli.Razredi.Find(id);
 
 
             return View(rz);
