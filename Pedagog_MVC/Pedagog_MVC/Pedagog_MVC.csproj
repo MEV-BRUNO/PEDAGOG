@@ -182,10 +182,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BazaPovezivanje\BazaDbContext.cs" />
+    <Compile Include="Controllers\AdresarController.cs" />
+    <Compile Include="Controllers\ListaPracenjaController.cs" />
+    <Compile Include="Controllers\OsobniPodaciController.cs" />
     <Compile Include="Controllers\PedagogController.cs" />
+    <Compile Include="Controllers\PopisUcenikaController.cs" />
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
+    <Compile Include="Models\PomocniModelLista\ModelLP.cs" />
+    <Compile Include="Models\PomocniModelPopisUc\ModelPU.cs" />
     <Compile Include="Models\Roditelj_list.cs" />
     <Compile Include="Models\Roditelj_procjena.cs" />
     <Compile Include="Models\Roditelj_razgovor.cs" />
@@ -196,6 +202,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Pedagog\TablesRadni2.cshtml" />
     <Content Include="Views\Pedagog\TablesRadni3.cshtml" />
     <Content Include="Views\Pedagog\TablesRadniForma.cshtml" />
@@ -2927,18 +2935,18 @@
     <Content Include="Views\Pedagog\Registracija.cshtml" />
     <Content Include="Views\Pedagog\AdminIndex.cshtml" />
     <Content Include="Views\Pedagog\ZaboravljenaLozinka.cshtml" />
-    <Content Include="Views\Pedagog\Tables_Ucenici_Lista.cshtml" />
+    <Content Include="Views\ListaPracenja\Tables_Ucenici_Lista.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis.cshtml" />
     <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Detalji.cshtml" />
-    <Content Include="Views\Pedagog\Tables_Ucenici_Popis_Osobni.cshtml" />
-    <Content Include="Views\Pedagog\UceniciPopisUcenici.cshtml" />
-    <Content Include="Views\Pedagog\UceniciPopisUceniciFormiranje.cshtml" />
+    <Content Include="Views\OsobniPodaci\Tables_Ucenici_Popis_Osobni.cshtml" />
+    <Content Include="Views\PopisUcenika\UceniciPopisUcenici.cshtml" />
+    <Content Include="Views\PopisUcenika\UceniciPopisUceniciFormiranje.cshtml" />
     <Content Include="Views\Pedagog\UceniciPopisDetalji.cshtml" />
-    <Content Include="Views\Pedagog\TablesRadni.cshtml" />
-    <Content Include="Views\Pedagog\DodajAdresar.cshtml" />
-    <Content Include="Views\Pedagog\UrediAdresar.cshtml" />
-    <Content Include="Views\Pedagog\ObrisiAdresar.cshtml" />
-    <Content Include="Views\Pedagog\InfoAdresar.cshtml" />
+    <Content Include="Views\Adresar\TablesRadni.cshtml" />
+    <Content Include="Views\Adresar\DodajAdresar.cshtml" />
+    <Content Include="Views\Adresar\UrediAdresar.cshtml" />
+    <Content Include="Views\Adresar\ObrisiAdresar.cshtml" />
+    <Content Include="Views\Adresar\InfoAdresar.cshtml" />
     <Content Include="Views\Pedagog\Tables_Nastavnik_Razrednik_Profil_Detalji.cshtml" />
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Napredovanje.cshtml" />
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja.cshtml" />
@@ -2947,6 +2955,24 @@
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_Novi_02.cshtml" />
     <Content Include="Views\Pedagog\Protokol_Promatranja_Uredi.cshtml" />
     <Content Include="Views\Pedagog\Protokol_Promatranja.cshtml" />
+    <Content Include="Views\OsobniPodaci\OsobniPartial.cshtml" />
+    <Content Include="Views\ListaPracenja\ListaPracenjaPartial.cshtml" />
+    <Content Include="Views\ListaPracenja\UrediClana.cshtml" />
+    <Content Include="Views\ListaPracenja\InfoClan.cshtml" />
+    <Content Include="Views\ListaPracenja\ObrisiClana.cshtml" />
+    <Content Include="Views\ListaPracenja\DodajClana.cshtml" />
+    <Content Include="Views\ListaPracenja\DodajRad.cshtml" />
+    <Content Include="Views\ListaPracenja\UrediRad.cshtml" />
+    <Content Include="Views\ListaPracenja\ObrisiRad.cshtml" />
+    <Content Include="Views\ListaPracenja\DodajPostignuce.cshtml" />
+    <Content Include="Views\ListaPracenja\UrediPostignuce.cshtml" />
+    <Content Include="Views\ListaPracenja\ObrisiPostignuce.cshtml" />
+    <Content Include="Views\ListaPracenja\InfoPostignuce.cshtml" />
+    <Content Include="Views\PopisUcenika\UrediPopis.cshtml" />
+    <Content Include="Views\PopisUcenika\ObrisiPopis.cshtml" />
+    <Content Include="Views\PopisUcenika\DodajUcenika.cshtml" />
+    <Content Include="Views\PopisUcenika\DodajPopis.cshtml" />
+    <Content Include="Views\PopisUcenika\ObrisiUcenika.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

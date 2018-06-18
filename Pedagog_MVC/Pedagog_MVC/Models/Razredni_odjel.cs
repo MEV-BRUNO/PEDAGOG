@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pedagog_MVC.Models
 {
+    [Table("razredni_odjel")]
     public class Razredni_odjel
     {
+        [Key]
         [Required]
         public int id_odjel { get; set; }
         [Required]
