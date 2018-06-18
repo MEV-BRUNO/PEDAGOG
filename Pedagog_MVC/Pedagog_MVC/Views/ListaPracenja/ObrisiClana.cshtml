@@ -1,0 +1,49 @@
+﻿@model ProjektIdio.Models.Obitelj
+
+<script src="@Url.Content("~/Scripts/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Brisanje člana obitelji</h4>
+        </div>
+        @using (Ajax.BeginForm("ObrisiClana", "ListaPracenja", new { id = Model.id_obitelj }, new AjaxOptions
+        {
+            HttpMethod = "Post",
+            OnSuccess = "DeleteSuccess"
+
+        }, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.id_obitelj)
+                    <div class="form-group">
+                        @Html.Display("Kontakt:", new { htmlAttributes = new { @class = "form-control" } })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <h4>Da li želite obrisati člana obitelji?</h4>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("Tables_Ucenici_Lista")" class="btn btn-default btn-md btn-grad">Odustani</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
