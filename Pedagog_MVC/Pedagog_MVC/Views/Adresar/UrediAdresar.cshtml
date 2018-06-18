@@ -68,23 +68,35 @@
 
                     <p>
                         @Html.ValidationSummary(true,
-                               "Spremanje nije uspjelo. Popravite potrebne podatke i pokušajte ponovno!", new { @class = "text-danger" })
+                                    "Spremanje nije uspjelo. Popravite potrebne podatke i pokušajte ponovno!", new { @class = "text-danger" })
                     </p>
 
                     <div class="modal-footer">
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" class="btn btn-primary" value="Potvrdi" />
+                                <a href="@Url.Action("TablesRadni")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
                                 <a href="@Url.Action("TablesRadni")" class="btn btn-default btn-md btn-grad">Odustani</a>
                             </div>
                         </div>
                     </div>
-</div>
                 </div>
+            </div>
         }
     </div>
 </div>
 
+<script src="~/assets/plugins/jquery-2.0.3.min.js"></script>
+<script src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<!-- END GLOBAL SCRIPTS -->
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="~/assets/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="~/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
 
 
 

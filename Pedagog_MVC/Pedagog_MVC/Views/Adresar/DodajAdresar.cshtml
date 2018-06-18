@@ -77,7 +77,7 @@
                 <div class="modal-footer">
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn btn-primary" value="Potvrdi" />
+                            <a href="@Url.Action("TablesRadni")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
                             <a href="@Url.Action("TablesRadni")" class="btn btn-default btn-md btn-grad">Odustani</a>
                         </div>
                     </div>
