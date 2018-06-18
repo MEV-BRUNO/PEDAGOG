@@ -18,15 +18,19 @@ namespace ProjektIdio.Models
         public int id_odjel { get; set; }
         [Required]
         public int id_skola { get; set; }
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Godina")]
         public int godina { get; set; }
         [Required]
         public int id_razrednik { get; set; }
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Ponavlja razred")]
         public int ponavlja { get; set; }
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Putnik")]
         public int putnik { get; set; }
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Zaduženja")]
         public string zaduzenja { get; set; }
 
     }

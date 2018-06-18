@@ -38,54 +38,58 @@ namespace Pedagog_MVC.Controllers
         [HttpPost]
         public ActionResult ListaPracenjaPartial(ModelLP li)
         {
-            //spremanje promjena o modelu ucenik
-            Ucenik uc = li.ucenik;
-
-            Ucenik U = baza.Ucenici.Where(
-              x => x.id_ucenik == uc.id_ucenik).SingleOrDefault();
-
-            if (uc.id_ucenik != 0 && U != null)// update
+            if (ModelState.IsValid)
             {
-                baza.Entry(U).CurrentValues.SetValues(uc);
+                //spremanje promjena o modelu ucenik
+                Ucenik uc = li.ucenik;
+
+                Ucenik U = baza.Ucenici.Where(
+                  x => x.id_ucenik == uc.id_ucenik).SingleOrDefault();
+
+                if (uc.id_ucenik != 0 && U != null)// update
+                {
+                    baza.Entry(U).CurrentValues.SetValues(uc);
+                }
+                else
+                {
+                    baza.Ucenici.Add(uc);
+                }
+                baza.SaveChanges();
+
+
+                //spremanje promjena o modelu lista pracenja
+                Ucenik_lista_pracenja lista = li.listaPracenja;
+
+                Ucenik_lista_pracenja L = baza.Liste_Pracenja.Where(
+                  x => x.id_pracenje == lista.id_pracenje).SingleOrDefault();
+
+                if (lista.id_pracenje != 0 && L != null)// update
+                {
+                    baza.Entry(L).CurrentValues.SetValues(lista);
+                }
+                else
+                {
+                    baza.Liste_Pracenja.Add(lista);
+                }
+                baza.SaveChanges();
+
+
+
+
+
+                if (Request.IsAjaxRequest())
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+
+
+
+
+
+                return RedirectToAction("Tables_Ucenici_Lista");
             }
             else
-            {
-                baza.Ucenici.Add(uc);
-            }
-            baza.SaveChanges();
-
-
-            //spremanje promjena o modelu lista pracenja
-            Ucenik_lista_pracenja lista = li.listaPracenja;
-
-            Ucenik_lista_pracenja L = baza.Liste_Pracenja.Where(
-              x => x.id_pracenje == lista.id_pracenje).SingleOrDefault();
-
-            if (lista.id_pracenje != 0 && L != null)// update
-            {
-                baza.Entry(L).CurrentValues.SetValues(lista);
-            }
-            else
-            {
-                baza.Liste_Pracenja.Add(lista);
-            }
-            baza.SaveChanges();
-
-
-
-
-
-            if (Request.IsAjaxRequest())
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
-            }
-
-
-
-
-
-            return RedirectToAction("Tables_Ucenici_Lista");
-
+                return RedirectToAction("Tables_Ucenici_Lista");
 
 
         }
