@@ -20,62 +20,68 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult UceniciPopisUcenici()
         {
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                ViewBag.baza = baza;
 
-            ViewBag.baza = baza;
+                List<Razredni_odjel> razredi = baza.Razredi.ToList();
 
-            List<Razredni_odjel> razredi = baza.Razredi.ToList();
-
-            return View(razredi);
+                return View(razredi);
+            }
+            else return RedirectToAction("Prijava", "Pedagog");
         }
 
 
         public ActionResult UceniciPopisUceniciFormiranje(int id)
         {
-
-            List<ModelPU> ucenici = new List<ModelPU>();
-
-
-            Razredni_odjel razred = baza.Razredi.Where(x => x.id_odjel == id).SingleOrDefault();
-
-
-         
-
-            foreach(Godina_ucenik uc in baza.godineUc)
+            if (Sesija.Trenutni.PedagogId > 0)
             {
-                if (uc.id_odjel == razred.id_odjel)
+                List<ModelPU> ucenici = new List<ModelPU>();
+
+
+                Razredni_odjel razred = baza.Razredi.Where(x => x.id_odjel == id).SingleOrDefault();
+
+
+
+
+                foreach (Godina_ucenik uc in baza.godineUc)
                 {
-                    ModelPU model = new ModelPU();
-                    model.godUcenik = uc;
-                    model.ucenik = new Ucenik();
-                    ucenici.Add(model);                  
-                }
-            }
-
-
-            for(int i=0; i < ucenici.Count(); i++)
-            {
-
-                foreach (Ucenik uc in baza.Ucenici)
-                {
-                    if (uc.id_ucenik==ucenici[i].godUcenik.id_ucenik)
+                    if (uc.id_odjel == razred.id_odjel)
                     {
-
-
-                       ucenici[i].ucenik = uc;
-
+                        ModelPU model = new ModelPU();
+                        model.godUcenik = uc;
+                        model.ucenik = new Ucenik();
+                        ucenici.Add(model);
                     }
                 }
 
+
+                for (int i = 0; i < ucenici.Count(); i++)
+                {
+
+                    foreach (Ucenik uc in baza.Ucenici)
+                    {
+                        if (uc.id_ucenik == ucenici[i].godUcenik.id_ucenik)
+                        {
+
+
+                            ucenici[i].ucenik = uc;
+
+                        }
+                    }
+
+                }
+
+
+
+                ViewBag.razred = razred;
+                ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
+
+
+                ViewBag.baza = baza;
+                return View(ucenici);
             }
-
-
-
-            ViewBag.razred = razred;
-            ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
-            
-
-            ViewBag.baza = baza;
-            return View(ucenici);
+            else return RedirectToAction("Prijava", "Pedagog");
         }
 
 
