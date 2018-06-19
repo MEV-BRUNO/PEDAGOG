@@ -19,6 +19,9 @@ namespace Pedagog_MVC.Controllers
         [HttpGet]
         public ActionResult Prijava()
         {
+
+            Sesija.Trenutni.PedagogId = 0;
+
             Pedagog ped = new Pedagog();
 
             return View(ped);
@@ -27,14 +30,18 @@ namespace Pedagog_MVC.Controllers
         [HttpPost]
         public ActionResult Prijava(Pedagog p)
         {
-            foreach (Pedagog ped in baza.Pedagozi)
+            Pedagog pedagog = baza.Pedagozi.SingleOrDefault(ped => ped.mail == p.mail && ped.lozinka == p.lozinka);
+
+            if (pedagog != null)
             {
-                if (ped.lozinka == p.lozinka && ped.mail == p.mail)
-                {
-                    return RedirectToAction("AdminIndex");
-                }
+                Sesija.Trenutni.PedagogId = pedagog.id_pedagog;
+                return RedirectToAction("AdminIndex");
             }
-            return RedirectToAction("Prijava");
+
+            else
+            {
+                return View("Prijava");
+            }
         }
 
         public ActionResult Popis()
@@ -72,7 +79,13 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult AdminIndex()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+
+            else
+                return RedirectToAction("Prijava");
         }
 		
         
@@ -86,90 +99,176 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult TablesRadni2()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult TablesRadni3()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
         
         public ActionResult Tables_ucenici()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
         
           public ActionResult TablesRadniForma()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
 		public ActionResult UceniciPopisUcenici()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 		
         public ActionResult Tables_Ucenici_Popis()
 		{
-			return View();
-		}
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
+        }
 		
 		
         public ActionResult Tables_Ucenici_Popis_Detalji()
 		{
-			return View();
-		}
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
+        }
 
 		public ActionResult UceniciPopisDetalji()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 		
       
 
         public ActionResult Tables()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Tables_Nastavnik_Razrednik_Profil_Detalji()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Ucenici_Zapisnik_Napredovanje()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Ucenici_Zapisnik_Pracenja()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Ucenici_Zapisnik_Pracenja_02()
-        { 
-            return View();
+        {
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
+
 
         public ActionResult Ucenici_Zapisnik_Pracenja_03_Edit()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Ucenici_Zapisnik_Pracenja_Novi_02()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Protokol_Promatranja_Uredi()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
         public ActionResult Protokol_Promatranja()
         {
-            return View();
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View();
+            }
+            else
+                return RedirectToAction("Prijava");
         }
 
 
