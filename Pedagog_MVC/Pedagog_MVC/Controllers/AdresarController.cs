@@ -18,7 +18,12 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult TablesRadni()
         {
-            return View(baza.Adresari);
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View(baza.Adresari);
+            }
+            else
+                return RedirectToAction("Prijava", "Pedagog");
         }
 
         public ActionResult DodajAdresar()

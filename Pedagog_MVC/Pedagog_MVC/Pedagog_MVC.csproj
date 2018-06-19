@@ -188,6 +188,7 @@
     <Compile Include="Controllers\PedagogController.cs" />
     <Compile Include="Controllers\PopisUcenikaController.cs" />
     <Compile Include="Controllers\RazredniOdjeliController.cs" />
+    <Compile Include="Controllers\SesijaController.cs" />
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
@@ -2984,6 +2985,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Dokumenti\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\Sesija\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

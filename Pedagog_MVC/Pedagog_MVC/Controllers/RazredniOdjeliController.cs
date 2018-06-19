@@ -19,7 +19,11 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult TablesRazredniOdjel()
         {
-            return View(odjeli.Razredi);
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View(odjeli.Razredi);
+            }
+            else return RedirectToAction("Prijava", "Pedagog");
         }
 
 
