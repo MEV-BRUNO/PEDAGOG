@@ -189,6 +189,7 @@
     <Compile Include="Controllers\PopisUcenikaController.cs" />
     <Compile Include="Controllers\RazredniOdjeliController.cs" />
     <Compile Include="Controllers\SesijaController.cs" />
+    <Compile Include="Controllers\SkoleController.cs" />
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
@@ -2980,6 +2981,11 @@
     <Content Include="Views\RazredniOdjeli\ObrisiOdjel.cshtml" />
     <Content Include="Views\RazredniOdjeli\TablesRazredniOdjel.cshtml" />
     <Content Include="Views\RazredniOdjeli\UrediRazredni_odjel.cshtml" />
+    <Content Include="Views\Skole\TablesSkole.cshtml" />
+    <Content Include="Views\Skole\DodajSkolu.cshtml" />
+    <Content Include="Views\Skole\ObrisiSkolu.cshtml" />
+    <Content Include="Views\Skole\InfoSkola.cshtml" />
+    <Content Include="Views\Skole\UrediSkolu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
