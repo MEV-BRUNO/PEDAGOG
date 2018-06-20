@@ -1,0 +1,80 @@
+﻿@model Pedagog_MVC.Models.Skola
+
+@{
+    ViewBag.Title = "ObrisiSkolu";
+}
+
+<h2>Obrisi Skolu</h2>
+
+<h3>Jeste li sigurni da ovo želite obrisati?</h3>
+<div>
+    <h4>Skola</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oib)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oib)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak na popis", "TablesSkole")
+        </div>
+    }
+</div>

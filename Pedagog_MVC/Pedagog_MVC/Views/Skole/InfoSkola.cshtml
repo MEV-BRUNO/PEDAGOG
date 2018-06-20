@@ -1,0 +1,98 @@
+﻿@model Pedagog_MVC.Models.Skola
+
+<script src="@Url.Content("~/Scripts/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Info o odabranoj školi</h4>
+        </div>
+        @using (Ajax.BeginForm("InfoSkola", "Skole", new AjaxOptions
+        {
+            HttpMethod = "Get",
+
+
+        }, new { @class = "form-horizontal", role = "form" }))
+
+
+        {
+            <div class="modal-body">
+                <div class="form-horizontal">
+
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>Naziv škole</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.naziv
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>Adresa</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.adresa
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>Grad</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.grad
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>Telefon</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.tel
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>E-mail</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.mail
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>Oib</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.oib
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <b>Bilješka</b>
+                        </div>
+                        <div class="col-md-9">
+                            @Model.opis
+                        </div>
+                    </div>
+                    
+
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <a href="@Url.Action("TablesSkole")" class="btn btn-default btn-md btn-grad">Povratak</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

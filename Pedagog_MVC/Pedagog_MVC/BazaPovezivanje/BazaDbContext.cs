@@ -33,5 +33,7 @@ namespace Pedagog_MVC.BazaPovezivanje
 
         public DbSet<Godina_ucenik> godineUc { get; set; }
 
+        public DbSet<Skola> skole { get; set; }
+
     }
 }
