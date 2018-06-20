@@ -19,7 +19,13 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult Tables_Ucenici_Lista()
         {
-            return View(baza.Ucenici);
+            if (Sesija.Trenutni.PedagogId > 0)
+            {
+                return View(baza.Ucenici);
+            }
+
+            else
+                return RedirectToAction("Prijava", "Pedagog");
         }
 
         [HttpGet]
