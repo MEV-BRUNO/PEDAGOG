@@ -190,6 +190,7 @@
     <Compile Include="Controllers\RazredniOdjeliController.cs" />
     <Compile Include="Controllers\SesijaController.cs" />
     <Compile Include="Controllers\SkoleController.cs" />
+    <Compile Include="Controllers\SkolskaGodinaController.cs" />
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
@@ -2919,7 +2920,9 @@
     <Content Include="Scripts\tables_ucenici_popis_učenici.html" />
     <Content Include="Scripts\tables_ucenici_popis_učenici_formiranje.html" />
     <Content Include="Scripts\ucenici_popis_detalji.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2986,6 +2989,10 @@
     <Content Include="Views\Skole\ObrisiSkolu.cshtml" />
     <Content Include="Views\Skole\InfoSkola.cshtml" />
     <Content Include="Views\Skole\UrediSkolu.cshtml" />
+    <Content Include="Views\SkolskaGodina\TablesSkolskaGodina.cshtml" />
+    <Content Include="Views\SkolskaGodina\DodajSkolskuGodinu.cshtml" />
+    <Content Include="Views\SkolskaGodina\ObrisiSkolskuGodinu.cshtml" />
+    <Content Include="Views\SkolskaGodina\UrediSkolskuGodinu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
