@@ -184,6 +184,7 @@
     <Compile Include="BazaPovezivanje\BazaDbContext.cs" />
     <Compile Include="Controllers\AdresarController.cs" />
     <Compile Include="Controllers\ListaPracenjaController.cs" />
+    <Compile Include="Controllers\NastavnikController.cs" />
     <Compile Include="Controllers\OsobniPodaciController.cs" />
     <Compile Include="Controllers\PedagogController.cs" />
     <Compile Include="Controllers\PopisUcenikaController.cs" />
@@ -2993,6 +2994,10 @@
     <Content Include="Views\SkolskaGodina\DodajSkolskuGodinu.cshtml" />
     <Content Include="Views\SkolskaGodina\ObrisiSkolskuGodinu.cshtml" />
     <Content Include="Views\SkolskaGodina\UrediSkolskuGodinu.cshtml" />
+    <Content Include="Views\Nastavnik\TablesPopisNastavnika.cshtml" />
+    <Content Include="Views\Nastavnik\DodajNastavnika.cshtml" />
+    <Content Include="Views\Nastavnik\ObrisiNastavnika.cshtml" />
+    <Content Include="Views\Nastavnik\UrediNastavnika.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
