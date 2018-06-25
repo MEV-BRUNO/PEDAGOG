@@ -510,8 +510,10 @@ CREATE TABLE IF NOT EXISTS `skola` (
 --
 
 CREATE TABLE IF NOT EXISTS `skolska_godina` (
-  `godina` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+  `id_skolska_godina` bigint(20) NOT NULL AUTO_INCREMENT,
+  `godina` int(11) NOT NULL,
+  PRIMARY KEY (`id_skolska_godina`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

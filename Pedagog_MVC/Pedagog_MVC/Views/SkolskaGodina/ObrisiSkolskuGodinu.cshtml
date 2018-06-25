@@ -1,0 +1,32 @@
+﻿@model Pedagog_MVC.Models.SkolskaGodina
+
+@{
+    ViewBag.Title = "ObrisiSkolskuGodinu";
+}
+
+<h2>Obrisi školsku godinu</h2>
+
+<h3>Jeste li sigurni da ovo želite obrisati?</h3>
+<div>
+    <h4>Školska Godina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.godina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.godina)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak", "TablesSkolskaGodina")
+        </div>
+    }
+</div>

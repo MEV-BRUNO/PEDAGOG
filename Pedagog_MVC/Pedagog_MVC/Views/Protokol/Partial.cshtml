@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ProjektIdio.Models.Ucenik>
+
+
+@foreach (ProjektIdio.Models.Ucenik uc in Model)
+{
+
+    <tr>
+        <td class="col-md-2">@uc.id_ucenik.</td>
+        <td class="col-md-10">
+            @Ajax.ActionLink(uc.ime_prezime, "ProtokolPartial", new { id = uc.id_ucenik }, new AjaxOptions
+            {
+                HttpMethod = "GET",
+                UpdateTargetId = "lista",
+                InsertionMode = InsertionMode.Replace
+            })
+        </td>
+    </tr>
+}
