@@ -1,4 +1,5 @@
-﻿using ProjektIdio.Models;
+﻿using Pedagog_MVC.fonts;
+using ProjektIdio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,7 +15,11 @@ namespace Pedagog_MVC.Models.PomocniModelPopisUc
         [Required]
         public Godina_ucenik godUcenik { get; set; }
 
+        [Required]
+        public Ucenik_lista_pracenja lista { get; set; }
 
+        [Required]
+        public Ucenik_biljeska biljeska { get; set; }
 
 
 

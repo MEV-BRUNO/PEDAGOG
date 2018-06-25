@@ -251,26 +251,7 @@ namespace Pedagog_MVC.Controllers
                 return RedirectToAction("Prijava");
         }
 
-        public ActionResult Protokol_Promatranja_Uredi()
-        {
-            if (Sesija.Trenutni.PedagogId > 0)
-            {
-                return View();
-            }
-            else
-                return RedirectToAction("Prijava");
-        }
-
-        public ActionResult Protokol_Promatranja()
-        {
-            if (Sesija.Trenutni.PedagogId > 0)
-            {
-                return View();
-            }
-            else
-                return RedirectToAction("Prijava");
-        }
-
+        
 
 
        
