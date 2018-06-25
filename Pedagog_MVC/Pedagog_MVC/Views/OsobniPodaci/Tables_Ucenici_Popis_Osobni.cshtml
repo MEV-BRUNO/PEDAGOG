@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<ProjektIdio.Models.Ucenik>
 
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scriptsjquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
@@ -258,7 +259,7 @@
                     </a>
                 </li>
                 <li class="panel ">
-                    <a href="~/#" data-parent="#menu1" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav1">
+                    <a href="#" data-parent="#menu1" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav1">
                         <i class="icon-tasks"> </i> OPĆI PODACI
 
                         <span class="pull-right">
@@ -266,11 +267,11 @@
                         </span>
                     </a>
                     <ul class="collapse" id="component-nav1">
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Razredni odjeli </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Popis učenika </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Popis nastavnika </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Školska godina</a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Podaci o školi </a></li>
+                        <li class=""><a href="@Url.Action("TablesRazredniOdjel","RazredniOdjeli")"><i class="icon-angle-right"></i> Razredni odjeli </a></li>
+                        <li class=""><a href=""><i class="icon-angle-right"></i> Popis učenika </a></li>
+                        <li class=""><a href=""><i class="icon-angle-right"></i> Popis nastavnika </a></li>
+                        <li class=""><a href="@Url.Action("TablesSkolskaGodina","SkolskaGodina")"><i class="icon-angle-right"></i> Školska godina</a></li>
+                        <li class=""><a href="@Url.Action("TablesSkole","Skole")"><i class="icon-angle-right"></i> Podaci o školi </a></li>
                     </ul>
                 </li>
                 <li class="panel">
@@ -284,6 +285,7 @@
         <!--END MENU SECTION -->
         <!--PAGE CONTENT -->
         <div id="content">
+
 
             <div class="inner">
                 <div class="row">
@@ -303,14 +305,29 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label>Odabri razrednog odjela:</label>
-                                            <select class="form-control">
-                                                <option>--</option>
-                                                <option>3A</option>
-                                                <option>3B</option>
-                                                <option>3C</option>
-                                                <option>3D</option>
-                                                <option>3E</option>
-                                            </select>
+                                            @using (@Ajax.BeginForm("Partial", "OsobniPodaci", new AjaxOptions
+    {
+        UpdateTargetId = "partial",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "Get"
+    },
+new { @class = "form-inline", id = "form1" }))
+    {
+                                            <div class="form-group">
+                                                @Html.DropDownList("razred", new SelectList(ViewBag.razredi, "Value", "Text"), new
+    {
+        @class = "form-control",
+        placeholder = "Naziv razreda",
+        onChange = "OsvjeziListu()"
+    })
+                                            </div>
+
+
+}
+                                            <br />
+
+                                       
+                                      
                                         </div>
                                     </div><!--END COL 3-->
                                     <div class="col-lg-9">
@@ -318,10 +335,9 @@
                                             <label>Odabir aktivnosti:</label>
                                             <select class="form-control" onchange="location = this.value;">
                                                 <option value="@Url.Action("UceniciPopisUcenici","PopisUcenika")">Popis učenika u razrednom odjelu</option>
-                                                <option selected="selected" value="@Url.Action("Tables_Ucenici_Popis_Osobni","OsobniPodaci")">Osobni podaci</option>
-                                                <option value="">Bilješke o radu s učenikom</option>
+                                                <option selected="selected" value="@Url.Action("Tables_Ucenici_Popis_Osobni","OsobniPodaci")">Bilješke o radu s učenikom</option>
                                                 <option value="@Url.Action("Tables_Ucenici_Lista","ListaPracenja")">Lista praćenja učenika - pedagoška obrada i anamneza</option>
-                                                <option value="">Protokol promatranja</option>
+                                                <option value="@Url.Action("Protokol_Promatranja","Protokol")">Protokol promatranja</option>
                                                 <option value="">Procjena suradnje</option>
                                             </select>
                                         </div>
@@ -340,31 +356,18 @@
                                                         <th>Prezime i ime</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-
-                                                    @foreach (ProjektIdio.Models.Ucenik uc in Model)
-                                                    {
-
-                                                        <tr>
-                                                            <td class="col-md-2">@uc.id_ucenik.</td>
-                                                            <td class="col-md-10">
-                                                                @Ajax.ActionLink(uc.ime_prezime, "OsobniPartial", new { id = uc.id_ucenik }, new AjaxOptions
-                                                                {
-                                                                    HttpMethod = "GET",
-                                                                    UpdateTargetId = "osobni",
-                                                                    InsertionMode = InsertionMode.Replace
-                                                                })
-                                                            </td>
-                                                        </tr>
-                                                    }
+                                                <tbody id="partial">
+                                                    @Html.Action("Partial")
+                                                    
                                                 </tbody>
-                                            </table>
+                                            </table>                                          
+ 
                                         </div>
                                     </div><!--END COL 3-->
 
                                     <div id="osobni">
 
-                                       
+
 
                                     </div>
 
@@ -407,3 +410,8 @@
 <!-- END BODY -->
 </html>
 
+<script type="text/javascript">
+    function OsvjeziListu() {
+        $('#form1').submit();
+    }
+</script>

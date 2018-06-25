@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Pedagog_MVC.Models
 {
+    [Table("ucenik_biljeska")]
     public class Ucenik_biljeska
     {
+        [Key]
         [Required]
         public long id_biljeska { get; set; }
         [Required]
