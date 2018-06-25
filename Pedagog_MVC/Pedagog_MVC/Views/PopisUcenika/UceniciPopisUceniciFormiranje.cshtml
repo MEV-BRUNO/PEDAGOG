@@ -260,11 +260,11 @@
                         </span>
                     </a>
                     <ul class="collapse" id="component-nav1">
-                        <li class=""><a href="#"><i class="icon-angle-right"></i> Razredni odjeli </a></li>
-                        <li class=""><a href="#"><i class="icon-angle-right"></i> Popis učenika </a></li>
-                        <li class=""><a href="#"><i class="icon-angle-right"></i> Popis nastavnika </a></li>
-                        <li class=""><a href="#"><i class="icon-angle-right"></i> Školska godina</a></li>
-                        <li class=""><a href="#"><i class="icon-angle-right"></i> Podaci o školi </a></li>
+                        <li class=""><a href="@Url.Action("TablesRazredniOdjel","RazredniOdjeli")"><i class="icon-angle-right"></i> Razredni odjeli </a></li>
+                        <li class=""><a href=""><i class="icon-angle-right"></i> Popis učenika </a></li>
+                        <li class=""><a href=""><i class="icon-angle-right"></i> Popis nastavnika </a></li>
+                        <li class=""><a href="@Url.Action("TablesSkolskaGodina","SkolskaGodina")"><i class="icon-angle-right"></i> Školska godina</a></li>
+                        <li class=""><a href="@Url.Action("TablesSkole","Skole")"><i class="icon-angle-right"></i> Podaci o školi </a></li>
                     </ul>
                 </li>
                 <li class="panel">
@@ -313,10 +313,9 @@
                                             <label>Odabir aktivnosti:</label>
                                             <select class="form-control" onchange="location = this.value;">
                                                 <option selected="selected" value="@Url.Action("UceniciPopisUcenici","PopisUcenika")">Popis učenika u razrednom odjelu</option>
-                                                <option value="@Url.Action("Tables_Ucenici_Popis_Osobni","OsobniPodaci")">Osobni podaci</option>
-                                                <option value="">Bilješke o radu s učenikom</option>
+                                                <option value="@Url.Action("Tables_Ucenici_Popis_Osobni","OsobniPodaci")">Bilješke o radu s učenikom</option>
                                                 <option value="@Url.Action("Tables_Ucenici_Lista","ListaPracenja")">Lista praćenja učenika - pedagoška obrada i anamneza</option>
-                                                <option value="">Protokol promatranja</option>
+                                                <option value="@Url.Action("Protokol_Promatranja","Protokol")">Protokol promatranja</option>
                                                 <option value="">Procjena suradnje</option>
                                             </select>
                                         </div>
@@ -324,8 +323,8 @@
                                 </div><!--END ROW -->
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <b><label>RAZREDNI ODJEL:</label></b><label>@ViewBag.razred.naziv</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <b><label>RAZREDNIK:</label></b><label>@ViewBag.razrednik.ime_prezime</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <b><label>RAZREDNI ODJEL:</label></b><label>@*@ViewBag.razred.naziv*@</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <b><label>RAZREDNIK:</label></b><label>@*@ViewBag.razrednik.ime_prezime*@</label>&nbsp;&nbsp;&nbsp;&nbsp;
                                         <b><label>ŠKOLSKA GODINA:</label></b><label>2017./2018.</label>
                                     </div>
                                 </div><!--END ROW -->

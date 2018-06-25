@@ -15,10 +15,16 @@ namespace ProjektIdio.Models
         public long id_nastavnik { get; set; }
         [Required]
         public int id_skola { get; set; }
-        [Required]
+        [Required(ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Prezime i Ime")]
         public string ime_prezime { get; set; }
-        [Required]
-        public int titula { get; set; }
+        [Required(ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Titula")]
+        public string titula { get; set; }
+
+        [Required(ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Adresa")]
+        public string adresa { get; set; }
 
 
     }

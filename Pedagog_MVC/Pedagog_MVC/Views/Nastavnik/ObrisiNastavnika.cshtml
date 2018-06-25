@@ -1,0 +1,50 @@
+﻿@model ProjektIdio.Models.Nastavnik
+
+@{
+    ViewBag.Title = "ObrisiNastavnika";
+}
+
+<h2>Obriši Nastavnika</h2>
+
+<h3>Jeste li sigurni da ovo želite obrisati?</h3>
+<div>
+    <h4>Nastavnik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ime_prezime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ime_prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.titula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak na tablicu", "TablesPopisNastavnika")
+        </div>
+    }
+</div>
