@@ -65,6 +65,12 @@
     <Reference Include="MySql.Data.Entity.EF6, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.Entity.6.10.7\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AddIn.Contract">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.AddIn.Contract.dll</HintPath>
@@ -187,6 +193,7 @@
     <Compile Include="Controllers\OsobniPodaciController.cs" />
     <Compile Include="Controllers\PedagogController.cs" />
     <Compile Include="Controllers\PopisUcenikaController.cs" />
+    <Compile Include="Controllers\ProtokolController.cs" />
     <Compile Include="Controllers\RazredniOdjeliController.cs" />
     <Compile Include="Controllers\SesijaController.cs" />
     <Compile Include="Controllers\SkoleController.cs" />
@@ -195,6 +202,7 @@
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
     <Compile Include="Models\PomocniModelLista\ModelLP.cs" />
+    <Compile Include="Models\PomocniModelOsobni\ModelOS.cs" />
     <Compile Include="Models\PomocniModelPopisUc\ModelPU.cs" />
     <Compile Include="Models\Roditelj_list.cs" />
     <Compile Include="Models\Roditelj_procjena.cs" />
@@ -206,6 +214,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Content Include="Content\PagedList.css" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Pedagog\TablesRadni2.cshtml" />
@@ -2959,8 +2968,8 @@
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_02.cshtml" />
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_03_Edit.cshtml" />
     <Content Include="Views\Pedagog\Ucenici_Zapisnik_Pracenja_Novi_02.cshtml" />
-    <Content Include="Views\Pedagog\Protokol_Promatranja_Uredi.cshtml" />
-    <Content Include="Views\Pedagog\Protokol_Promatranja.cshtml" />
+    <Content Include="Views\Protokol\Protokol_Promatranja_Uredi.cshtml" />
+    <Content Include="Views\Protokol\Protokol_Promatranja.cshtml" />
     <Content Include="Views\OsobniPodaci\OsobniPartial.cshtml" />
     <Content Include="Views\ListaPracenja\ListaPracenjaPartial.cshtml" />
     <Content Include="Views\ListaPracenja\UrediClana.cshtml" />
@@ -2993,6 +3002,18 @@
     <Content Include="Views\SkolskaGodina\DodajSkolskuGodinu.cshtml" />
     <Content Include="Views\SkolskaGodina\ObrisiSkolskuGodinu.cshtml" />
     <Content Include="Views\SkolskaGodina\UrediSkolskuGodinu.cshtml" />
+    <Content Include="Views\OsobniPodaci\DodajClana.cshtml" />
+    <Content Include="Views\OsobniPodaci\InfoClan.cshtml" />
+    <Content Include="Views\OsobniPodaci\ObrisiClana.cshtml" />
+    <Content Include="Views\OsobniPodaci\UrediClana.cshtml" />
+    <Content Include="Views\Protokol\ProtokolPartial.cshtml" />
+    <Content Include="Views\Protokol\DodajProtokol.cshtml" />
+    <Content Include="Views\Protokol\InfoProtokol.cshtml" />
+    <Content Include="Views\Protokol\ObrisiProtokol.cshtml" />
+    <Content Include="Views\PopisUcenika\UrediUcenika.cshtml" />
+    <Content Include="Views\OsobniPodaci\Partial.cshtml" />
+    <Content Include="Views\ListaPracenja\Partial.cshtml" />
+    <Content Include="Views\Protokol\Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
