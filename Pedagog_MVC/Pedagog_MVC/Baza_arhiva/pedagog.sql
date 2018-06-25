@@ -77,7 +77,8 @@ CREATE TABLE IF NOT EXISTS `nastavnik` (
   `id_nastavnik` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_skola` int(11) NOT NULL,
   `ime_prezime` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
-  `titula` int(11) NOT NULL,
+  `titula` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
+  `adresa` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
   PRIMARY KEY (`id_nastavnik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1 ;
 

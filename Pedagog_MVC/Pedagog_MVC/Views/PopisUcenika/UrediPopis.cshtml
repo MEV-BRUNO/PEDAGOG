@@ -48,8 +48,10 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.os_ss, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.os_ss, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.os_ss, "", new { @class = "text-danger" })
+                            <div>
+                                @Html.RadioButtonFor(model => model.os_ss, 1) SREDNJA ŠKOLA
+                                @Html.RadioButtonFor(model => model.os_ss, 0) OSNOVNA ŠKOLA
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">

@@ -17,8 +17,88 @@ namespace Pedagog_MVC.Controllers
     {
         private BazaDbContext baza = new BazaDbContext();
 
+
+        public PartialViewResult Partial(string razred, string s, string g, string m, string p)
+        {
+            List<Godina_ucenik> lista = baza.godineUc.ToList();
+
+            Razredni_odjel raz = new Razredni_odjel();
+
+
+            List<Ucenik> popis = baza.Ucenici.ToList();
+
+
+            // filtriranje popisa - naziv
+            if (!String.IsNullOrEmpty(razred))
+            {
+
+                foreach (Godina_ucenik li in lista)
+                {
+
+                    Razredni_odjel pomoc = baza.Razredi.Find(li.id_odjel);
+
+                    if (pomoc.naziv == razred)
+                    {
+                        raz = pomoc;
+                        break;
+                    }
+
+                }
+
+                lista = lista.Where(x => x.id_odjel == raz.id_odjel).ToList();
+
+
+                popis.Clear();
+
+                foreach (Godina_ucenik god in lista)
+                {
+                    popis.Add(baza.Ucenici.Find(god.id_ucenik));
+                }
+
+            }
+
+
+
+            return PartialView(popis);
+        }
+
         public ActionResult Tables_Ucenici_Lista()
         {
+
+            List<SelectListItem> razredi = new List<SelectListItem>();
+
+            razredi.Add(new SelectListItem
+            {
+
+                Text = "---",
+                Value = "",
+                Selected = true
+
+            });
+
+            foreach (Razredni_odjel raz in baza.Razredi)
+            {
+                razredi.Add(new SelectListItem
+                {
+                    Text = raz.naziv,
+                    Value = raz.naziv
+                });
+
+            }
+
+            razredi.Add(new SelectListItem
+            {
+
+                Text = "3.B",
+                Value = "3.B",
+
+
+            });
+
+
+            ViewBag.razredi = razredi;
+
+
             if (Sesija.Trenutni.PedagogId > 0)
             {
                 return View(baza.Ucenici);
