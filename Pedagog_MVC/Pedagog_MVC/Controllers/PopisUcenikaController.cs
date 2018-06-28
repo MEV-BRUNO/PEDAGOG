@@ -23,7 +23,7 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult UceniciPopisUcenici()
         {
-
+           
             List<SelectListItem> razredi1 = new List<SelectListItem>();
 
             razredi1.Add(new SelectListItem
@@ -67,6 +67,7 @@ namespace Pedagog_MVC.Controllers
                 return View(razredi);
             }
             else return RedirectToAction("Prijava", "Pedagog");
+
         }
 
 
@@ -113,8 +114,8 @@ namespace Pedagog_MVC.Controllers
 
 
 
-                //ViewBag.razred = razred;
-                //ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
+                ViewBag.razred = razred;
+                ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
 
 
                 ViewBag.baza = baza;
@@ -225,14 +226,14 @@ namespace Pedagog_MVC.Controllers
         }
 
 
-        public ActionResult DodajUcenika(long id)
+        public ActionResult DodajUcenika(long idRaz, long idOdjel, long idSkola)
         {
 
-            Godina_ucenik god = baza.godineUc.Find(id);
+           
 
-            ViewBag.IdRaz = god.id_razrednik;
-            ViewBag.IdOdjel = god.id_odjel;
-            ViewBag.IdSkola = god.id_skola;
+            ViewBag.IdRaz = idRaz;
+            ViewBag.IdOdjel = idOdjel;
+            ViewBag.IdSkola = idSkola;
 
             if (Request.IsAjaxRequest())
             {
@@ -258,8 +259,7 @@ namespace Pedagog_MVC.Controllers
   
  
 
-            if (ModelState.IsValid)
-            {
+           
                 baza.Ucenici.Add(uc);
                 baza.godineUc.Add(god);
                 
@@ -274,10 +274,9 @@ namespace Pedagog_MVC.Controllers
                 baza.SaveChanges();
 
                 return RedirectToAction("UceniciPopisUcenici");
-            }
+            
 
-            else
-               return RedirectToAction("DodajUcenika");
+          
 
         }
 
@@ -360,12 +359,31 @@ namespace Pedagog_MVC.Controllers
             }
 
 
+            Ucenik_biljeska B = baza.UcBiljeske.Where(
+              x => x.id_ucenik == id).SingleOrDefault();
+
+            if (B != null)
+            {
+                baza.UcBiljeske.Remove(B);
+                baza.SaveChanges();
+            }
+
+            Ucenik_lista_pracenja L = baza.Liste_Pracenja.Where(
+              x => x.id_ucenik == id).SingleOrDefault();
+
+            if (L != null)
+            {
+                baza.Liste_Pracenja.Remove(L);
+                baza.SaveChanges();
+            }
+
+
             if (Request.IsAjaxRequest())
             {
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
 
-            return RedirectToAction("TablesRadni");
+            return RedirectToAction("UceniciPopisUcenici");
         }
 
 

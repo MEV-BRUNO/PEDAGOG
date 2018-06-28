@@ -22,9 +22,6 @@ namespace ProjektIdio.Models
         [Display(Name = "Titula")]
         public string titula { get; set; }
 
-        [Required(ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Adresa")]
-        public string adresa { get; set; }
 
 
     }
