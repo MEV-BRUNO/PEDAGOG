@@ -45,14 +45,7 @@ namespace Pedagog_MVC.Controllers
 
             }
 
-            razredi1.Add(new SelectListItem
-            {
-
-                Text = "3.B",
-                Value = "3.B",
-
-
-            });
+            
 
 
             ViewBag.razredi = razredi1;
@@ -68,6 +61,37 @@ namespace Pedagog_MVC.Controllers
             }
             else return RedirectToAction("Prijava", "Pedagog");
 
+        }
+
+
+        public PartialViewResult Partial(string razred)
+        {
+           
+
+            Razredni_odjel raz = new Razredni_odjel();
+
+
+            List<Razredni_odjel> popis = baza.Razredi.ToList();
+
+
+            ViewBag.baza = baza;
+
+            // filtriranje popisa - naziv
+            if (!String.IsNullOrEmpty(razred))
+            {
+
+                
+                popis = popis.Where(x => x.naziv.Contains(razred)).ToList();
+
+
+                
+            
+
+            }
+
+
+
+            return PartialView(popis);
         }
 
 
@@ -295,6 +319,15 @@ namespace Pedagog_MVC.Controllers
 
             ViewBag.nastavnici = nastavnici;
 
+            List<SelectListItem> skGodine = new List<SelectListItem>();
+
+            foreach (SkolskaGodina god in baza.skolske_godine)
+            {
+                skGodine.Add(new SelectListItem { Selected = false, Text = god.godina.ToString(), Value = god.godina.ToString() });
+            }
+
+            ViewBag.godine = skGodine;
+
             if (Request.IsAjaxRequest())
             {
                 ViewBag.IsUpdate = false;
@@ -407,6 +440,22 @@ namespace Pedagog_MVC.Controllers
                 if (god.id_ucenik == id)
                 {
                     model.godUcenik = god;
+                }
+            }
+
+            foreach (Ucenik_lista_pracenja lis in baza.Liste_Pracenja)
+            {
+                if (lis.id_ucenik == id)
+                {
+                    model.lista = lis;
+                }
+            }
+
+            foreach (Ucenik_biljeska bil in baza.UcBiljeske)
+            {
+                if (bil.id_ucenik == id)
+                {
+                    model.biljeska = bil;
                 }
             }
 

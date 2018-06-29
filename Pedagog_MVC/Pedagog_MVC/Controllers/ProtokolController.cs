@@ -141,14 +141,6 @@ namespace Pedagog_MVC.Controllers
 
             }
 
-            razredi.Add(new SelectListItem
-            {
-
-                Text = "3.B",
-                Value = "3.B",
-
-
-            });
 
 
             ViewBag.razredi = razredi;
