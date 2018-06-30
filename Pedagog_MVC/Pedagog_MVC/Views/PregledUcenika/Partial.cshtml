@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ProjektIdio.Models.Ucenik>
+
+@foreach (ProjektIdio.Models.Ucenik uc in Model)
+{
+    <tr>
+        <td class="col-md-1">@uc.id_ucenik</td>
+        <td class="col-md-2">@uc.ime_prezime</td>
+
+        <td class="col-md-1">@uc.spol</td>
+        <td class="col-md-1">@uc.datum</td>
+        <td class="col-md-1">@uc.oib</td>
+        <td class="col-md-3">@uc.adresa<br>@uc.grad</td>
+        <td class="col-md-2">
+            <a href="@Url.Action("UrediUcenika","PregledUcenika", new { id=uc.id_ucenik })" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+            <a href="@Url.Action("infoUcenik","PregledUcenika", new { id=uc.id_ucenik })" class="btn btn-info btn-xs btn-grad">Info</a>
+            <a href="@Url.Action("ObrisiUcenika","PregledUcenika", new { id=uc.id_ucenik })" class="btn btn-danger btn-xs btn-grad">Briši</a>
+        </td>
+    </tr>
+}

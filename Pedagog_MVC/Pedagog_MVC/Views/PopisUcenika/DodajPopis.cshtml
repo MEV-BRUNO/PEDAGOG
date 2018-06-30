@@ -8,7 +8,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Dodavanje novog kontakta</h4>
+            <h4 class="modal-title">Dodavanje novog popisa učenika</h4>
         </div>
         @using (Ajax.BeginForm("DodajPopis", "PopisUcenika", new AjaxOptions
         {
@@ -48,10 +48,10 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.godina, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.godina, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownListFor(m => m.godina, new SelectList(ViewBag.godine, "Value", "Text"), "Odaberi šk. godinu", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.godina, "", new { @class = "text-danger" })
                         </div>
-                    </div>                    
+                    </div>            
                     <div class="form-group">
                         @Html.LabelFor(model => model.os_ss, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.id_razrednik, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.DropDownListFor(m => m.id_odjel, new SelectList(ViewBag.nastavnici, "Value", "Text"), "Odaberi nastavnika", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownListFor(m => m.id_razrednik, new SelectList(ViewBag.nastavnici, "Value", "Text"), "Odaberi nastavnika", new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.id_razrednik, "", new { @class = "text-danger" })
                         </div>
                     </div>
