@@ -12,12 +12,13 @@ namespace ProjektIdio.Models
        [Key]
        [Required]
         public long id_ucenik { get; set; }
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
+        [Display(Name = "Ime i Prezime")]
         public string ime_prezime { get; set; }     
         [Required]
         public int spol { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "Datum licence")]
+        [Display(Name = "Datum rodenja")]
         [DataType(DataType.Date)]
         //ako ne napišemo fiksno ovaj format Google Chrome nece dobro prikazati datumsko polje
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

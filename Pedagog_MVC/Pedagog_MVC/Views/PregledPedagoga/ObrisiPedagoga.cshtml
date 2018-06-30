@@ -1,0 +1,48 @@
+﻿@model Pedagog_MVC.Models.Pedagog
+
+<script src="@Url.Content("~/Scripts/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Brisanje pedagoga</h4>
+        </div>
+        @using (Ajax.BeginForm("ObrisiPedagoga", "PregledPedagoga", new { id = Model.id_pedagog }, new AjaxOptions
+        {
+            HttpMethod = "Post",
+            OnSuccess = "DeleteSuccess"
+
+        }, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.id_pedagog)
+                    <div class="form-group">
+                        @Html.Display("Pedagog:", new { htmlAttributes = new { @class = "form-control" } })
+                        <div class="col-md-10">
+                            <label>@ViewBag.pedagog.ime_prezime</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <h4>Da li želite obrisati pedagoga?</h4>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <a href="@Url.Action("PedagogTables")" class="btn btn-success" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("PedagogTables")" class="btn btn-default btn-md btn-grad">Odustani</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

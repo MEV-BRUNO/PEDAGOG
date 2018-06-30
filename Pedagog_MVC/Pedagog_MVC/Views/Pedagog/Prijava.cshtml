@@ -12,33 +12,33 @@
 
         @Html.AntiForgeryToken()
 
-        <div class="form-signin">
+    <div class="form-signin">
 
-            <div class="text-center">
-                <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
-            </div>
-
-            <p></p>
-            <p></p>
-
-            <p class="text-muted text-center btn-block btn btn-primary btn-rect">
-                Upišite korisničko ime i lozinku
-            </p>
-
-            <p></p>
-            <p></p>
-
-            @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail adresa" } })
-            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
-
-            <p></p>
-            <p></p>
-
-            @Html.PasswordFor(model => model.lozinka, new { @class = "form-control", placeholder = "Lozinka" })
-            @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
-
-
+        <div class="text-center">
+            <img src="~/Logo/logo.png" id="logoimg" alt=" Logo" />
         </div>
+
+        <p></p>
+        <p></p>
+
+        <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+            Upišite korisničko ime i lozinku
+        </p>
+
+        <p></p>
+        <p></p>
+
+        @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", placeholder = "E-mail adresa" } })
+        @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+
+        <p></p>
+        <p></p>
+
+        @Html.PasswordFor(model => model.lozinka, new { @class = "form-control", placeholder = "Lozinka" })
+        @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+
+
+    </div>
         <p></p>
         <p></p>
         // Submit (save) tipka

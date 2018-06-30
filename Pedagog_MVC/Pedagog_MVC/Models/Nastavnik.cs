@@ -22,7 +22,8 @@ namespace ProjektIdio.Models
         [Display(Name = "Titula")]
         public string titula { get; set; }
 
-
+        [Required]
+        public string adresa { get; set; }
 
     }
 }

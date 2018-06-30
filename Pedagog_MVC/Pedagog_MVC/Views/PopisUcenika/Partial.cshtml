@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Pedagog_MVC.Models.Razredni_odjel>
+
+@foreach (Pedagog_MVC.Models.Razredni_odjel raz in Model)
+{
+    <tr>
+        <td class="col-md-1">@raz.id_odjel</td>
+        <td class="col-md-4">Popis učenika razredni odjel - @raz.naziv</td>
+        <td class="col-md-1">@raz.naziv</td>
+        <td class="col-md-1">@raz.godina .</td>
+        <td class="col-md-2">@ViewBag.baza.Nastavnici.Find(raz.id_razrednik).ime_prezime</td>
+        <td class="col-md-3">
+            <a href="@Url.Action("UrediPopis","PopisUcenika",new { id = raz.id_odjel})" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+            <a href="@Url.Action("UceniciPopisUceniciFormiranje","PopisUcenika", new { id =raz.id_odjel})" data-toggle="modal" aria-hidden="true" class="btn btn-info btn-xs btn-grad">Info</a>
+            <a href="@Url.Action("ObrisiPopis","PopisUcenika", new { id = raz.id_odjel })" data-toggle="modal" aria-hidden="true" class="btn btn-danger btn-xs btn-grad">Obriši</a>
+        </td>
+    </tr>
+}
