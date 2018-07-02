@@ -55,6 +55,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -204,6 +207,8 @@
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
+    <Compile Include="Models\PDF Reports\ListaReport.cs" />
+    <Compile Include="Models\PDF Reports\ProtokolReport.cs" />
     <Compile Include="Models\PomocniModelLista\ModelLP.cs" />
     <Compile Include="Models\PomocniModelOsobni\ModelOS.cs" />
     <Compile Include="Models\PomocniModelPopisUc\ModelPU.cs" />
@@ -212,6 +217,7 @@
     <Compile Include="Models\Roditelj_razgovor.cs" />
     <Compile Include="Models\SkolskaGodina.cs" />
     <Compile Include="Models\Strucno_usavrsavanje.cs" />
+    <Compile Include="Models\PDF Reports\UceniciReport.cs" />
     <Compile Include="Models\Ucenik.cs" />
     <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">

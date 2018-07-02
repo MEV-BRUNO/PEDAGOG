@@ -29,6 +29,18 @@ namespace Pedagog_MVC.Controllers
 
         public ActionResult DodajNastavnika()
         {
+
+            List<SelectListItem> skole = new List<SelectListItem>();
+
+            foreach (Skola skola in nastavnik.skole)
+            {
+                skole.Add(new SelectListItem { Selected = false, Text = skola.naziv, Value = skola.id_skola.ToString() });
+            }
+
+            ViewBag.skole = skole;
+
+
+
             if (Request.IsAjaxRequest())
             {
                 ViewBag.IsUpdate = false;
