@@ -11,6 +11,9 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Pedagog_MVC.fonts;
+using Pedagog_MVC.Models.PomocniModelLista;
+using Pedagog_MVC.Models.PDF_Reports;
+using System.IO;
 
 namespace Pedagog_MVC.Controllers
 {
@@ -321,6 +324,34 @@ namespace Pedagog_MVC.Controllers
             else
                 return RedirectToAction("DodajClana");
 
+        }
+
+
+        public FileStreamResult Ispis(long id)
+        {
+            ModelOS ucenik = new ModelOS();
+
+
+
+            ucenik.Init(id, baza);
+
+            
+
+            Godina_ucenik lista = baza.godineUc.Where(x => x.id_ucenik == ucenik.ucenik.id_ucenik).SingleOrDefault();
+
+            Skola sk = baza.skole.Find(lista.id_skola);
+
+            Razredni_odjel raz = baza.Razredi.Find(lista.id_odjel);
+
+
+            List<Obitelj> obitelj = baza.Obitelji.Where(x => x.id_ucenik == ucenik.ucenik.id_ucenik).ToList();
+            
+            
+
+
+            OsobniReport report = new OsobniReport(ucenik, sk,raz, obitelj);
+
+            return new FileStreamResult(new MemoryStream(report.Podaci), "application/pdf");
         }
 
     }
