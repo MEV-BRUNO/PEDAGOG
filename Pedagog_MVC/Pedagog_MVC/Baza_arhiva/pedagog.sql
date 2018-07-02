@@ -511,8 +511,10 @@ CREATE TABLE IF NOT EXISTS `skola` (
 --
 
 CREATE TABLE IF NOT EXISTS `skolska_godina` (
-  `godina` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+  `id_skolska_godina` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `godina` INT(11) NOT NULL,
+  PRIMARY KEY (`id_skolska_godina`)
+  ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -595,15 +597,16 @@ CREATE TABLE IF NOT EXISTS `ucenik_biljeska` (
 --
 
 CREATE TABLE IF NOT EXISTS `ucenik_godina` (
-  `id_ucenik` bigint(20) NOT NULL,
+  `id_ucenik` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_skola` int(11) NOT NULL,
   `id_odjel` int(11) NOT NULL,
   `godina` int(11) NOT NULL,
   `id_razrednik` int(11) NOT NULL,
   `ponavlja` int(11) NOT NULL COMMENT 'da li učenik ponavlja razred',
   `putnik` int(11) NOT NULL,
-  `zaduzenja` text COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+  `zaduzenja` text COLLATE utf8_croatian_ci NOT NULL,
+  PRIMARY KEY (`id_ucenik`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -707,10 +710,12 @@ CREATE TABLE IF NOT EXISTS `ucenik_napredovanje_ponav` (
 --
 
 CREATE TABLE IF NOT EXISTS `ucenik_neposredni_rad` (
+  `id_rad` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_pracenje` bigint(20) NOT NULL,
   `datum` date NOT NULL,
-  `biljeska` text COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+  `biljeska` text COLLATE utf8_croatian_ci NOT NULL,
+  PRIMARY KEY (`id_rad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -719,11 +724,13 @@ CREATE TABLE IF NOT EXISTS `ucenik_neposredni_rad` (
 --
 
 CREATE TABLE IF NOT EXISTS `ucenik_obrazovna_postignuca` (
+  `id_postignuce` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_pracenje` bigint(20) NOT NULL,
   `godina` int(11) NOT NULL,
   `razred` int(11) NOT NULL,
-  `napomena` text COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+  `napomena` text COLLATE utf8_croatian_ci NOT NULL,
+  PRIMARY KEY (`id_postignuce`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -760,6 +767,7 @@ CREATE TABLE IF NOT EXISTS `ucenik_procjena_suradnje_ponav` (
 --
 
 CREATE TABLE IF NOT EXISTS `ucenik_protokol_pracenja` (
+  `id_protokol` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_pracenje` bigint(20) NOT NULL,
   `id_pedagog` int(11) NOT NULL,
   `id_ucenik` bigint(20) NOT NULL,
@@ -774,8 +782,9 @@ CREATE TABLE IF NOT EXISTS `ucenik_protokol_pracenja` (
   `odnos` text COLLATE utf8_croatian_ci NOT NULL,
   `doprinos` text COLLATE utf8_croatian_ci NOT NULL,
   `opis` text COLLATE utf8_croatian_ci NOT NULL,
-  `zakljucak` text COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+  `zakljucak` text COLLATE utf8_croatian_ci NOT NULL,
+  PRIMARY KEY (`id_protokol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
