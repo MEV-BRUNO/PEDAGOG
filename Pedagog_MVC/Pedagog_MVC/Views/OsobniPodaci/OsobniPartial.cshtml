@@ -15,19 +15,7 @@
                             <label class="control-label col-lg-12">Odabrani učenik: @Model.ucenik.ime_prezime</label>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-
-                        <div class="form-group">
-                            <label class="control-label col-lg-5">Školska godina:</label>
-                            <div class="col-lg-7">
-                                <select class="form-control">
-                                    <option>2017./2018.</option>
-                                    <option>2016./2017.</option>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
+                  
                     <div class="col-lg-4">
                     </div>
                 </form>
@@ -100,13 +88,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-lg-2">Razredni odjel:</label>
+                        <label for="text1" class="control-label col-lg-2">Razredni odjel:</label>
                         <div class="col-lg-6">
-                            <select class="form-control">
-                                <option>5C</option>
-                                <option>6A</option>
-                                <option>6B</option>
-                            </select>
+
+                            <label for="text1" class="form-control">@ViewBag.razred.naziv</label>
+
                         </div>
                     </div>
                     <div class="form-group">

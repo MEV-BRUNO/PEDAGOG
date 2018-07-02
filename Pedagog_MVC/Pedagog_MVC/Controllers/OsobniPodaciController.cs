@@ -107,6 +107,10 @@ namespace Pedagog_MVC.Controllers
         public ActionResult OsobniPartial(long id)
         {
 
+            Ucenik_lista_pracenja lst = baza.Liste_Pracenja.Where(x => x.id_ucenik == id).SingleOrDefault();
+
+            ViewBag.razred = baza.Razredi.Find(lst.id_odjel);
+
             ModelOS model = new ModelOS();
 
             model.Init(id, baza);
@@ -120,6 +124,9 @@ namespace Pedagog_MVC.Controllers
         [HttpPost]
         public ActionResult OsobniPartial(ModelOS model)
         {
+
+           
+           
 
             if (ModelState.IsValid)
             {
