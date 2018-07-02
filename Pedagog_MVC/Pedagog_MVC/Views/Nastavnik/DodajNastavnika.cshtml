@@ -26,12 +26,18 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.id_nastavnik, new { Value = 0 })
-                    @Html.HiddenFor(model => model.id_skola, new { Value = 0 })
                     <div class="form-group">
                         @Html.LabelFor(model => model.ime_prezime, htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-md-9">
                             @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_skola, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(m => m.id_skola, new SelectList(ViewBag.skole, "Value", "Text"), "Odaberi školu", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.id_skola, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,7 +59,7 @@
 
                     <p>
                         @Html.ValidationSummary(true,
-    "Spremanje nije uspjelo. Popravite potrebne podatke i pokušajte ponovno!", new { @class = "text-danger" })
+"Spremanje nije uspjelo. Popravite potrebne podatke i pokušajte ponovno!", new { @class = "text-danger" })
                     </p>
 
                     <div class="modal-footer">

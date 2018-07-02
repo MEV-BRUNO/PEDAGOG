@@ -107,15 +107,7 @@ namespace Pedagog_MVC.Controllers
                 return RedirectToAction("Prijava");
         }
 
-        public ActionResult TablesRadni3()
-        {
-            if (Sesija.Trenutni.PedagogId > 0)
-            {
-                return View();
-            }
-            else
-                return RedirectToAction("Prijava");
-        }
+       
         
         public ActionResult Tables_ucenici()
         {

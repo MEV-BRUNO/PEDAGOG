@@ -6,6 +6,7 @@ using ProjektIdio.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -18,12 +19,12 @@ namespace Pedagog_MVC.Controllers
     {
         private BazaDbContext baza = new BazaDbContext();
 
-
+        
 
 
         public ActionResult UceniciPopisUcenici()
         {
-
+           
             List<SelectListItem> razredi1 = new List<SelectListItem>();
 
             razredi1.Add(new SelectListItem
@@ -45,14 +46,7 @@ namespace Pedagog_MVC.Controllers
 
             }
 
-            razredi1.Add(new SelectListItem
-            {
-
-                Text = "3.B",
-                Value = "3.B",
-
-
-            });
+            
 
 
             ViewBag.razredi = razredi1;
@@ -67,6 +61,38 @@ namespace Pedagog_MVC.Controllers
                 return View(razredi);
             }
             else return RedirectToAction("Prijava", "Pedagog");
+
+        }
+
+
+        public PartialViewResult Partial(string razred)
+        {
+           
+
+            Razredni_odjel raz = new Razredni_odjel();
+
+
+            List<Razredni_odjel> popis = baza.Razredi.ToList();
+
+
+            ViewBag.baza = baza;
+
+            // filtriranje popisa - naziv
+            if (!String.IsNullOrEmpty(razred))
+            {
+
+                
+                popis = popis.Where(x => x.naziv.Contains(razred)).ToList();
+
+
+                
+            
+
+            }
+
+
+
+            return PartialView(popis);
         }
 
 
@@ -113,8 +139,9 @@ namespace Pedagog_MVC.Controllers
 
 
 
-                //ViewBag.razred = razred;
-                //ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
+                ViewBag.razred = razred;
+                ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
+        
 
 
                 ViewBag.baza = baza;
@@ -225,14 +252,14 @@ namespace Pedagog_MVC.Controllers
         }
 
 
-        public ActionResult DodajUcenika(long id)
+        public ActionResult DodajUcenika(long idRaz, long idOdjel, long idSkola)
         {
 
-            Godina_ucenik god = baza.godineUc.Find(id);
+           
 
-            ViewBag.IdRaz = god.id_razrednik;
-            ViewBag.IdOdjel = god.id_odjel;
-            ViewBag.IdSkola = god.id_skola;
+            ViewBag.IdRaz = idRaz;
+            ViewBag.IdOdjel = idOdjel;
+            ViewBag.IdSkola = idSkola;
 
             if (Request.IsAjaxRequest())
             {
@@ -258,8 +285,7 @@ namespace Pedagog_MVC.Controllers
   
  
 
-            if (ModelState.IsValid)
-            {
+           
                 baza.Ucenici.Add(uc);
                 baza.godineUc.Add(god);
                 
@@ -273,11 +299,18 @@ namespace Pedagog_MVC.Controllers
 
                 baza.SaveChanges();
 
-                return RedirectToAction("UceniciPopisUcenici");
-            }
+            ModelPU pomoc = new ModelPU();
+            pomoc.biljeska = biljeska;
+            pomoc.godUcenik = god;
+            pomoc.lista = lista;
+            pomoc.ucenik = uc;
 
-            else
-               return RedirectToAction("DodajUcenika");
+        
+
+                return RedirectToAction("UceniciPopisUcenici");
+            
+
+          
 
         }
 
@@ -295,6 +328,15 @@ namespace Pedagog_MVC.Controllers
             }
 
             ViewBag.nastavnici = nastavnici;
+
+            List<SelectListItem> skGodine = new List<SelectListItem>();
+
+            foreach (SkolskaGodina god in baza.skolske_godine)
+            {
+                skGodine.Add(new SelectListItem { Selected = false, Text = god.godina.ToString(), Value = god.godina.ToString() });
+            }
+
+            ViewBag.godine = skGodine;
 
             if (Request.IsAjaxRequest())
             {
@@ -341,6 +383,7 @@ namespace Pedagog_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ObrisiUcenika1(int id)
         {
+
             Godina_ucenik A = baza.godineUc.Where(
               x => x.id_ucenik == id).SingleOrDefault();
 
@@ -360,12 +403,31 @@ namespace Pedagog_MVC.Controllers
             }
 
 
+            Ucenik_biljeska B = baza.UcBiljeske.Where(
+              x => x.id_ucenik == id).SingleOrDefault();
+
+            if (B != null)
+            {
+                baza.UcBiljeske.Remove(B);
+                baza.SaveChanges();
+            }
+
+            Ucenik_lista_pracenja L = baza.Liste_Pracenja.Where(
+              x => x.id_ucenik == id).SingleOrDefault();
+
+            if (L != null)
+            {
+                baza.Liste_Pracenja.Remove(L);
+                baza.SaveChanges();
+            }
+
+
             if (Request.IsAjaxRequest())
             {
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
 
-            return RedirectToAction("TablesRadni");
+            return RedirectToAction("UceniciPopisUcenici");
         }
 
 
@@ -389,6 +451,22 @@ namespace Pedagog_MVC.Controllers
                 if (god.id_ucenik == id)
                 {
                     model.godUcenik = god;
+                }
+            }
+
+            foreach (Ucenik_lista_pracenja lis in baza.Liste_Pracenja)
+            {
+                if (lis.id_ucenik == id)
+                {
+                    model.lista = lis;
+                }
+            }
+
+            foreach (Ucenik_biljeska bil in baza.UcBiljeske)
+            {
+                if (bil.id_ucenik == id)
+                {
+                    model.biljeska = bil;
                 }
             }
 
@@ -459,6 +537,83 @@ namespace Pedagog_MVC.Controllers
             else
                 return RedirectToAction("UrediUcenika", model.ucenik.id_ucenik);
         }
+
+
+        public FileStreamResult Ispis(long id)
+        {
+            List<ModelPU> ucenici = new List<ModelPU>();
+
+            List<Ucenik> ucks = baza.Ucenici.ToList();
+
+            List<Godina_ucenik> gods = baza.godineUc.ToList();
+
+            List<Ucenik_biljeska> biljs = baza.UcBiljeske.ToList();
+
+            List<Ucenik_lista_pracenja> lists = baza.Liste_Pracenja.ToList();
+
+
+            foreach(Godina_ucenik god in gods)
+            {
+
+                ModelPU model = new ModelPU();
+
+                
+
+                if (god.id_odjel == id)
+                {
+
+                    model.godUcenik = god;
+
+                    foreach(Ucenik uc in ucks)
+                    {
+                        if (god.id_ucenik == uc.id_ucenik)
+                        {
+                            model.ucenik = uc;
+
+                            foreach(Ucenik_lista_pracenja lista in lists)
+                            {
+
+                                if(lista.id_ucenik== uc.id_ucenik)
+                                {
+                                    model.lista = lista;
+
+
+                                    foreach(Ucenik_biljeska bilj in biljs)
+                                    {
+                                        if (bilj.id_ucenik == uc.id_ucenik)
+                                        {
+                                            model.biljeska = bilj;
+                                            ucenici.Add(model);
+                                        }
+                                    }
+
+
+                                }
+
+
+                            }
+
+
+                        }
+                    }
+
+                }
+
+            }
+
+
+            Razredni_odjel raz = baza.Razredi.Find(id);
+
+            Nastavnik razrednik = baza.Nastavnici.Find(raz.id_razrednik);
+
+            Skola sk = baza.skole.Find(razrednik.id_skola);
+          
+
+            UceniciReport report = new UceniciReport(ucenici, sk, raz,razrednik);
+
+            return new FileStreamResult(new MemoryStream(report.Podaci), "application/pdf");
+        }
+
 
     }
 }

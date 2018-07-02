@@ -1,10 +1,12 @@
 ﻿using Pedagog_MVC.BazaPovezivanje;
 using Pedagog_MVC.fonts;
 using Pedagog_MVC.Models;
+using Pedagog_MVC.Models.PDF_Reports;
 using Pedagog_MVC.Models.PomocniModelLista;
 using ProjektIdio.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -86,14 +88,7 @@ namespace Pedagog_MVC.Controllers
 
             }
 
-            razredi.Add(new SelectListItem
-            {
-
-                Text = "3.B",
-                Value = "3.B",
-
-
-            });
+           
 
 
             ViewBag.razredi = razredi;
@@ -585,5 +580,23 @@ namespace Pedagog_MVC.Controllers
 
 
         }
+
+
+        public FileStreamResult Ispis(long id)
+        {
+            ModelLP ucenik = new ModelLP();
+
+
+
+            ucenik.Init(id, baza);
+
+            Skola sk = baza.skole.Find(ucenik.Razrednik.id_skola);
+
+
+            ListaReport report = new ListaReport(ucenik, sk);
+
+            return new FileStreamResult(new MemoryStream(report.Podaci), "application/pdf");
+        }
+
     }
     }

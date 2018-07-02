@@ -55,6 +55,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -194,6 +197,8 @@
     <Compile Include="Controllers\OsobniPodaciController.cs" />
     <Compile Include="Controllers\PedagogController.cs" />
     <Compile Include="Controllers\PopisUcenikaController.cs" />
+    <Compile Include="Controllers\PregledPedagogaController.cs" />
+    <Compile Include="Controllers\PregledUcenikaController.cs" />
     <Compile Include="Controllers\ProtokolController.cs" />
     <Compile Include="Controllers\RazredniOdjeliController.cs" />
     <Compile Include="Controllers\SesijaController.cs" />
@@ -202,6 +207,8 @@
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
+    <Compile Include="Models\PDF Reports\ListaReport.cs" />
+    <Compile Include="Models\PDF Reports\ProtokolReport.cs" />
     <Compile Include="Models\PomocniModelLista\ModelLP.cs" />
     <Compile Include="Models\PomocniModelOsobni\ModelOS.cs" />
     <Compile Include="Models\PomocniModelPopisUc\ModelPU.cs" />
@@ -210,6 +217,7 @@
     <Compile Include="Models\Roditelj_razgovor.cs" />
     <Compile Include="Models\SkolskaGodina.cs" />
     <Compile Include="Models\Strucno_usavrsavanje.cs" />
+    <Compile Include="Models\PDF Reports\UceniciReport.cs" />
     <Compile Include="Models\Ucenik.cs" />
     <Compile Include="Models\Ucenik_lista_pracenja.cs" />
     <Compile Include="Global.asax.cs">
@@ -219,7 +227,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Views\Pedagog\TablesRadni2.cshtml" />
-    <Content Include="Views\Pedagog\TablesRadni3.cshtml" />
+    <Content Include="Views\PregledUcenika\TablesRadni3.cshtml" />
     <Content Include="Views\Pedagog\TablesRadniForma.cshtml" />
     <Content Include="Views\Pedagog\Public.cshtml" />
     <Content Include="Views\Pedagog\Tables.cshtml" />
@@ -3003,12 +3011,10 @@
     <Content Include="Views\SkolskaGodina\DodajSkolskuGodinu.cshtml" />
     <Content Include="Views\SkolskaGodina\ObrisiSkolskuGodinu.cshtml" />
     <Content Include="Views\SkolskaGodina\UrediSkolskuGodinu.cshtml" />
-
     <Content Include="Views\Nastavnik\TablesPopisNastavnika.cshtml" />
     <Content Include="Views\Nastavnik\DodajNastavnika.cshtml" />
     <Content Include="Views\Nastavnik\ObrisiNastavnika.cshtml" />
     <Content Include="Views\Nastavnik\UrediNastavnika.cshtml" />
-
     <Content Include="Views\OsobniPodaci\DodajClana.cshtml" />
     <Content Include="Views\OsobniPodaci\InfoClan.cshtml" />
     <Content Include="Views\OsobniPodaci\ObrisiClana.cshtml" />
@@ -3021,7 +3027,16 @@
     <Content Include="Views\OsobniPodaci\Partial.cshtml" />
     <Content Include="Views\ListaPracenja\Partial.cshtml" />
     <Content Include="Views\Protokol\Partial.cshtml" />
-
+    <Content Include="Views\PregledUcenika\UrediUcenika.cshtml" />
+    <Content Include="Views\PregledUcenika\ObrisiUcenika.cshtml" />
+    <Content Include="Views\PregledUcenika\infoUcenik.cshtml" />
+    <Content Include="Views\PregledUcenika\Partial.cshtml" />
+    <Content Include="Views\PregledPedagoga\PedagogTables.cshtml" />
+    <Content Include="Views\PregledPedagoga\infoPedagog.cshtml" />
+    <Content Include="Views\PregledPedagoga\UrediPedagoga.cshtml" />
+    <Content Include="Views\PregledPedagoga\ObrisiPedagoga.cshtml" />
+    <Content Include="Views\PregledPedagoga\DodajPedagoga.cshtml" />
+    <Content Include="Views\PopisUcenika\Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

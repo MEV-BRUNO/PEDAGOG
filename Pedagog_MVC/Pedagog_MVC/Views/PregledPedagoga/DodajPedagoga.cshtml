@@ -1,0 +1,107 @@
+﻿@model Pedagog_MVC.Models.Pedagog
+
+<script src="@Url.Content("~/Scripts/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Dodavanje novog pedagoga u sustav</h4>
+        </div>
+        @using (Ajax.BeginForm("DodajPedagoga", "PregledPedagoga", new AjaxOptions
+        {
+            HttpMethod = "Post",
+            OnSuccess = "CreateSuccess"
+
+        }, new { @class = "form-horizontal", role = "form" }))
+
+
+        {
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.id_pedagog, new { Value = 0 })
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ime_prezime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ime_prezime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ime_prezime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.aktivan, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div>
+                                @Html.RadioButtonFor(model => model.aktivan, 1) DA
+                                @Html.RadioButtonFor(model => model.aktivan, 0) NE
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.licenca, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.licenca, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.licenca, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.titula, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.titula, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.titula, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.id_skola, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.id_skola, new SelectList(ViewBag.skole, "Value", "Text"), "Odaberi skolu", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.id_skola, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.lozinka, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.lozinka, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.lozinka, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.aktiv_link, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.aktiv_link, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.aktiv_link, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <p>
+                        @Html.ValidationSummary(true,
+"Spremanje nije uspjelo. Popravite potrebne podatke i pokušajte ponovno!", new { @class = "text-danger" })
+                    </p>
+
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <a href="@Url.Action("PedagogTables")" class="btn btn-primary" onclick="$(this).closest('form').submit()">Potvrdi</a>
+                                <a href="@Url.Action("PedagogTables")" class="btn btn-default btn-md btn-grad">Odustani</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

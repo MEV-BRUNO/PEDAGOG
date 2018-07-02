@@ -1,10 +1,13 @@
 ﻿using Pedagog_MVC.BazaPovezivanje;
 using Pedagog_MVC.fonts;
 using Pedagog_MVC.Models;
+using Pedagog_MVC.Models.PDF_Reports;
+using Pedagog_MVC.Models.PomocniModelPopisUc;
 using ProjektIdio.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -141,14 +144,6 @@ namespace Pedagog_MVC.Controllers
 
             }
 
-            razredi.Add(new SelectListItem
-            {
-
-                Text = "3.B",
-                Value = "3.B",
-
-
-            });
 
 
             ViewBag.razredi = razredi;
@@ -260,6 +255,39 @@ namespace Pedagog_MVC.Controllers
 
         }
 
+
+        public FileStreamResult Ispis(long id)
+        {
+            ModelPU ucenik = new ModelPU();
+
+            Ucenik_protokol_pracenja protokol = baza.Protokoli.Find(id);
+
+            ucenik.ucenik = baza.Ucenici.Find(protokol.id_ucenik);
+
+            ucenik.biljeska = baza.UcBiljeske.Where(x => x.id_ucenik == protokol.id_ucenik).SingleOrDefault();
+
+            ucenik.godUcenik = baza.godineUc.Find(protokol.id_ucenik);
+
+            ucenik.lista = baza.Liste_Pracenja.Where(x => x.id_ucenik == protokol.id_ucenik).SingleOrDefault();
+
+            Razredni_odjel raz = baza.Razredi.Find(ucenik.lista.id_odjel);
+
+            Nastavnik razrednik = baza.Nastavnici.Find(raz.id_razrednik);
+
+            Skola sk = baza.skole.Find(razrednik.id_skola);
+
+           
+            
+
+
+
+     
+
+
+            ProtokolReport report = new ProtokolReport(ucenik, sk, raz, razrednik, protokol);
+
+            return new FileStreamResult(new MemoryStream(report.Podaci), "application/pdf");
+        }
 
     }
 }
