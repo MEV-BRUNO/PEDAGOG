@@ -6,6 +6,7 @@ using ProjektIdio.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Pedagog_MVC.Controllers
     {
         private BazaDbContext baza = new BazaDbContext();
 
-
+        
 
 
         public ActionResult UceniciPopisUcenici()
@@ -140,6 +141,7 @@ namespace Pedagog_MVC.Controllers
 
                 ViewBag.razred = razred;
                 ViewBag.razrednik = baza.Nastavnici.Where(x => x.id_nastavnik == razred.id_razrednik).SingleOrDefault();
+        
 
 
                 ViewBag.baza = baza;
@@ -297,6 +299,14 @@ namespace Pedagog_MVC.Controllers
 
                 baza.SaveChanges();
 
+            ModelPU pomoc = new ModelPU();
+            pomoc.biljeska = biljeska;
+            pomoc.godUcenik = god;
+            pomoc.lista = lista;
+            pomoc.ucenik = uc;
+
+        
+
                 return RedirectToAction("UceniciPopisUcenici");
             
 
@@ -373,6 +383,7 @@ namespace Pedagog_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ObrisiUcenika1(int id)
         {
+
             Godina_ucenik A = baza.godineUc.Where(
               x => x.id_ucenik == id).SingleOrDefault();
 
@@ -526,6 +537,83 @@ namespace Pedagog_MVC.Controllers
             else
                 return RedirectToAction("UrediUcenika", model.ucenik.id_ucenik);
         }
+
+
+        public FileStreamResult Ispis(long id)
+        {
+            List<ModelPU> ucenici = new List<ModelPU>();
+
+            List<Ucenik> ucks = baza.Ucenici.ToList();
+
+            List<Godina_ucenik> gods = baza.godineUc.ToList();
+
+            List<Ucenik_biljeska> biljs = baza.UcBiljeske.ToList();
+
+            List<Ucenik_lista_pracenja> lists = baza.Liste_Pracenja.ToList();
+
+
+            foreach(Godina_ucenik god in gods)
+            {
+
+                ModelPU model = new ModelPU();
+
+                
+
+                if (god.id_odjel == id)
+                {
+
+                    model.godUcenik = god;
+
+                    foreach(Ucenik uc in ucks)
+                    {
+                        if (god.id_ucenik == uc.id_ucenik)
+                        {
+                            model.ucenik = uc;
+
+                            foreach(Ucenik_lista_pracenja lista in lists)
+                            {
+
+                                if(lista.id_ucenik== uc.id_ucenik)
+                                {
+                                    model.lista = lista;
+
+
+                                    foreach(Ucenik_biljeska bilj in biljs)
+                                    {
+                                        if (bilj.id_ucenik == uc.id_ucenik)
+                                        {
+                                            model.biljeska = bilj;
+                                            ucenici.Add(model);
+                                        }
+                                    }
+
+
+                                }
+
+
+                            }
+
+
+                        }
+                    }
+
+                }
+
+            }
+
+
+            Razredni_odjel raz = baza.Razredi.Find(id);
+
+            Nastavnik razrednik = baza.Nastavnici.Find(raz.id_razrednik);
+
+            Skola sk = baza.skole.Find(razrednik.id_skola);
+          
+
+            UceniciReport report = new UceniciReport(ucenici, sk, raz,razrednik);
+
+            return new FileStreamResult(new MemoryStream(report.Podaci), "application/pdf");
+        }
+
 
     }
 }
