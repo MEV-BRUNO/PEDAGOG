@@ -1,4 +1,8 @@
-﻿using iTextSharp.text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Pedagog_MVC.Models.PomocniModelPopisUc;
 using ProjektIdio.Models;
@@ -8,15 +12,16 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace Pedagog_MVC.Models
+
+namespace Pedagog_MVC.Models.PDF_Reports
 {
-    public class UceniciReport
+    public class ProtokolReport
     {
 
 
         public byte[] Podaci { get; private set; }
 
-        public UceniciReport(List<ModelPU> ucenici, Skola škola,Razredni_odjel raz, Nastavnik razrednik)
+        public ProtokolReport(ModelPU ucenik, Skola škola, Razredni_odjel raz, Nastavnik razrednik, Ucenik_protokol_pracenja protokol)
         {
             // generiranje pdf-a
 
@@ -41,7 +46,7 @@ namespace Pedagog_MVC.Models
             Font header = new Font(font, 12, Font.NORMAL, BaseColor.DARK_GRAY);
             Font naslov = new Font(font, 14, Font.BOLDITALIC, BaseColor.BLACK);
             Font tekst = new Font(font, 10, Font.NORMAL, BaseColor.BLACK);
-         
+
 
             // logo
             /*
@@ -57,13 +62,13 @@ namespace Pedagog_MVC.Models
             pdfDokument.Add(p);
 
             // naslov 
-            p = new Paragraph("POPIS UČENIKA U RAZREDNOM ODJELU", naslov);
+            p = new Paragraph("PROTOKOL PROMATRANJA UČENIKA", naslov);
             p.Alignment = Element.ALIGN_CENTER;
             p.SpacingBefore = 30;
             p.SpacingAfter = 30;
             pdfDokument.Add(p);
 
-            p = new Paragraph("ŠKOLA: "+ škola.naziv);
+            p = new Paragraph("IME I PREZIME UCENIKA: " + ucenik.ucenik.ime_prezime);
             p.Alignment = Element.ALIGN_LEFT;
             p.SpacingAfter = 10;
             pdfDokument.Add(p);
@@ -75,51 +80,45 @@ namespace Pedagog_MVC.Models
 
             p = new Paragraph("RAZREDNIK: " + razrednik.ime_prezime);
             p.Alignment = Element.ALIGN_LEFT;
+            p.SpacingAfter = 10;
+            pdfDokument.Add(p);
+
+            p = new Paragraph("NADNEVAK PROMATRANJA: " + protokol.datum);
+            p.Alignment = Element.ALIGN_LEFT;
+            p.SpacingAfter = 10;
+            pdfDokument.Add(p);
+
+            p = new Paragraph("SOCIOEKONOMSKI STATUS UCENIKA: " + protokol.soc_eko);
+            p.Alignment = Element.ALIGN_LEFT;
+            p.SpacingAfter = 10;
+            pdfDokument.Add(p);
+
+            p = new Paragraph("CILJ PROMATRANJA: " + protokol.cilj);
+            p.Alignment = Element.ALIGN_LEFT;
             p.SpacingAfter = 25;
             pdfDokument.Add(p);
 
             // tablica sa popisom studenata
-            PdfPTable t = new PdfPTable(7); // 7 kolona
+            PdfPTable t = new PdfPTable(2); // 7 kolona
             t.WidthPercentage = 100; // širina tablice
-            t.SetWidths(new float[] { 3, 6, 4, 5,10,6,8 });
+            t.SetWidths(new float[] { 10, 10 });
+            t.DefaultCell.FixedHeight = 500f;
 
             // dodati zaglavlje
-            t.AddCell(VratiCeliju("R.br.", tekst, true, BaseColor.WHITE));
-            t.AddCell(VratiCeliju("Ime i prezime učenika", tekst, false, BaseColor.WHITE));
-            t.AddCell(VratiCeliju("Roditelji", tekst, true, BaseColor.WHITE));
-            t.AddCell(VratiCeliju("Adresa", tekst, true, BaseColor.WHITE));
-            t.AddCell(VratiCeliju("Ponavlja razred DA/NE", tekst, true, BaseColor.WHITE));
-            t.AddCell(VratiCeliju("Putnik  DA/NE", tekst, true, BaseColor.WHITE));
-            t.AddCell(VratiCeliju("Posebna zaduženja", tekst, true, BaseColor.WHITE));
+            t.AddCell(VratiCeliju(" Spremnost za kontaktiranje: kako se učenik \n odnosi prema drugim učenicima, je li rezerviran, \n povučen, osamljen, spreman za kontakt", tekst, true, BaseColor.WHITE,50f));
+            t.AddCell(VratiCeliju(protokol.sposobnost, tekst, false, BaseColor.WHITE,50));
+            t.AddCell(VratiCeliju(" Prilagodljivost: popustljiv, vođa, svojeglav", tekst, true, BaseColor.WHITE,50));
+            t.AddCell(VratiCeliju(protokol.prilagodljivost, tekst, true, BaseColor.WHITE,50));
+            t.AddCell(VratiCeliju(" Odnos prema drugima: bezobziran, pun ljubavi, \n  grub, proracunat, mijenja prijatelje...", tekst, true, BaseColor.WHITE,50));
+            t.AddCell(VratiCeliju(protokol.odnos, tekst, true, BaseColor.WHITE,50));
+            t.AddCell(VratiCeliju(" Doprinos životu grupe: aktivan, kritizira, napada, \n ogovara, pouzdan je, spreman pomoći", tekst, true, BaseColor.WHITE,50));
+            t.AddCell(VratiCeliju(protokol.doprinos, tekst, true, BaseColor.WHITE, 50));
+            t.AddCell(VratiCeliju(" Opis promatrane situacije", tekst, true, BaseColor.WHITE, 130));
+            t.AddCell(VratiCeliju(protokol.opis, tekst, true, BaseColor.WHITE, 130));
+            t.AddCell(VratiCeliju(" Zakljucak \n (podatci o učenju, vanjski i unutarnji utjecaji \n praćenja)", tekst, true, BaseColor.WHITE, 130));
+            t.AddCell(VratiCeliju(protokol.zakljucak, tekst, true, BaseColor.WHITE, 130));
 
-            // dodajemo popis studenata
-            int i = 1;
-            foreach (ModelPU ucenik in ucenici)
-            {
-                t.AddCell(VratiCeliju((i++).ToString(), tekst, true, BaseColor.WHITE));
-                t.AddCell(VratiCeliju(ucenik.ucenik.ime_prezime, tekst, false, BaseColor.WHITE));
-                t.AddCell(VratiCeliju("-", tekst, true, BaseColor.WHITE));
-                t.AddCell(VratiCeliju(ucenik.ucenik.adresa, tekst, true, BaseColor.WHITE));
-                if (ucenik.godUcenik.ponavlja == 1)
-                {
-                    t.AddCell(VratiCeliju("DA", tekst, true, BaseColor.WHITE));
-                }
-                else
-                {
-                    t.AddCell(VratiCeliju("NE", tekst, true, BaseColor.WHITE));
-                }
 
-                if (ucenik.godUcenik.putnik == 1)
-                {
-                    t.AddCell(VratiCeliju("DA", tekst, true, BaseColor.WHITE));
-                }
-                else
-                {
-                    t.AddCell(VratiCeliju("NE", tekst, true, BaseColor.WHITE));
-                }
-
-                t.AddCell(VratiCeliju(ucenik.godUcenik.zaduzenja, tekst, true, BaseColor.WHITE));
-            }
 
             // dodati tablicu na dokument
             pdfDokument.Add(t);
@@ -130,13 +129,14 @@ namespace Pedagog_MVC.Models
         }
 
         private PdfPCell VratiCeliju(string labela, Font font,
-            bool nowrap, BaseColor boja)
+            bool nowrap, BaseColor boja, float visina)
         {
             PdfPCell c1 = new PdfPCell(new Phrase(labela, font));
             c1.BackgroundColor = boja;
             c1.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
             c1.Padding = 5;
             c1.NoWrap = nowrap;
+            c1.FixedHeight = visina;
             return c1;
         }
 

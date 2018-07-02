@@ -207,6 +207,8 @@
     <Compile Include="Models\Godina_ucenik.cs" />
     <Compile Include="Models\Nastavnik.cs" />
     <Compile Include="Models\Obitelj.cs" />
+    <Compile Include="Models\PDF Reports\ListaReport.cs" />
+    <Compile Include="Models\PDF Reports\ProtokolReport.cs" />
     <Compile Include="Models\PomocniModelLista\ModelLP.cs" />
     <Compile Include="Models\PomocniModelOsobni\ModelOS.cs" />
     <Compile Include="Models\PomocniModelPopisUc\ModelPU.cs" />
