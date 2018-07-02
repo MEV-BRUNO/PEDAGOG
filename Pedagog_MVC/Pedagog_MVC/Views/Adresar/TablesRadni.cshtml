@@ -113,22 +113,10 @@
                     </a>
                 </li>
                 <li class="panel ">
-                    <a href="~/#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                    <a href="@Url.Action("UceniciPopisUcenici","PopisUcenika")" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                         <i class="icon-tasks"> </i> UČENICI
 
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
                     </a>
-                    <ul class="collapse" id="component-nav">
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Popis učenika </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Osobni podaci </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Bilješke o radu s učenikom </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Lista praćenja</a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Protokol promatranja </a></li>
-                        <li class=""><a href="~/#"><i class="icon-angle-right"></i> Procjena suradnje </a></li>
-
-                    </ul>
                 </li>
                 <li class="panel ">
                     <a href="~/#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
@@ -300,7 +288,7 @@
                 <hr />               
 
                 <div class="row">
-                    <div class="col-lg-11">
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Podaci iz baze
@@ -329,11 +317,11 @@
                                 {
                                     <tr>
                                         <td class="col-md-1">@adr.id_kontakt</td>
-                                        <td class="col-md-3">@adr.naziv</td>
+                                        <td class="col-md-2">@adr.naziv</td>
                                         <td class="col-md-2">@adr.adresa</td>
                                         <td class="col-md-1">@adr.tel<br>@adr.mail</td>
                                         <td class="col-md-3">@adr.opis</td>
-                                        <td class="col-md-2">
+                                        <td class="col-md-6">
                                             <a href="@Url.Action("UrediAdresar","Adresar",new { id = adr.id_kontakt})" data-toggle="modal" aria-hidden="true" class="btn btn-primary btn-xs btn-grad">Uredi</a>
                                             <a href="@Url.Action("InfoAdresar","Adresar", new { id =adr.id_kontakt})" data-toggle="modal" aria-hidden="true" class="btn btn-info btn-xs btn-grad">Info</a>
                                             <a href="@Url.Action("ObrisiAdresar","Adresar", new { id = adr.id_kontakt })" data-toggle="modal" aria-hidden="true" class="btn btn-danger btn-xs btn-grad">Obriši</a>
